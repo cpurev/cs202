@@ -6,16 +6,16 @@
 #include <iostream>
 
 double cpp_tfoc(const char* str) {
-
+	return 0;
 }
 
 double c_ctof(const char* str) {
-
+	return 0;
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
 
-
+	std::cout << "What " << argc;
 
 	return 1;
 }
