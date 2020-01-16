@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-double cpp_tfoc(const char* str) {
+double cpp_ftoc(const char* str) {
 	return 0;
 }
 
@@ -15,7 +15,11 @@ double c_ctof(const char* str) {
 
 int main(int argc, char* argv[]) {
 
-	std::cout << "What " << argc;
+	std::cout << "What " << argc << std::endl;
+
+	for (auto i = 0; i < argc; i++) {
+		std::cout << argv[i] << std::endl;
+	}
 
 	return 1;
 }
