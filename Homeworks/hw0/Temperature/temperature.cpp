@@ -30,10 +30,12 @@ double c_ctof(const char* str) {
 
 	//Check if every digit is a number
 	//if not return 999
-	for (auto x : a)
-		if (x > 57 || x < 48 || x != 45)
+	for (auto x : a) {
+		if (x == 45)
+			continue;
+		if (x > 57 || x < 48)
 			return d;
-
+	}
 	//Conversion
 	if(d = std::stod(str))
 		d = (d - 32) * (5.0 / 9);
