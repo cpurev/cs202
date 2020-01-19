@@ -15,7 +15,7 @@ double cpp_ftoc(const char* str) {
 	double d = 999;
 
 	if (iss >> d)
-		d = (d - 32) * (5 / 9);
+		d = (d - 32) * (5.0 / 9);
 
 	return d;
 }
@@ -26,6 +26,8 @@ double c_ctof(const char* str) {
 	double d = 999;
 
 	d = std::stod(str);
+
+	d = (d - 32) * (5.0 / 9);
 
 	return d;
 }
