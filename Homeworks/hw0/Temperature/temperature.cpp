@@ -4,9 +4,20 @@
 //Fahrenheit to Celsius
 
 #include <iostream>
+#include <string>
+#include <sstream>
 
+//Uses stringstream
 double cpp_ftoc(const char* str) {
-	return 0;
+
+	std::istringstream iss;
+	iss.str(str);
+	double d = 999;
+
+	if (iss >> d)
+		d = (d - 32) * (5 / 9);
+
+	return d;
 }
 
 double c_ctof(const char* str) {
@@ -15,11 +26,21 @@ double c_ctof(const char* str) {
 
 int main(int argc, char* argv[]) {
 
-	std::cout << "What " << argc << std::endl;
-
 	for (auto i = 0; i < argc; i++) {
 		std::cout << argv[i] << std::endl;
 	}
+	std::string str = "NULL";
+
+	if(argv[1] != NULL)
+		str = argv[1];
+
+	if (argv[2] != NULL)
+		return 0;
+
+	if (str == "--ftoc")
+		std::cout << cpp_ftoc(argv[2]);
+
+	else if(str == "--ctof")
 
 	return 1;
 }
