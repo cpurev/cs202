@@ -25,12 +25,16 @@ double c_ctof(const char* str) {
 
 	double d = 999;
 
+	//to string
 	std::string a = str;
 
+	//Check if every digit is a number
+	//if not return 999
 	for (auto x : a)
 		if (x > 57 || x < 48)
 			return d;
 
+	//Conversion
 	if(d = std::stod(str))
 		d = (d - 32) * (5.0 / 9);
 
@@ -53,7 +57,7 @@ int main(int argc, char* argv[]) {
 		std::cout << "Celsius: " << cpp_ftoc(argv[2]) << std::endl;
 
 	else if (str == "--ctof")
-		std::cout << "Celsius" << c_ctof(argv[2]) << std::endl;
+		std::cout << "Celsius: " << c_ctof(argv[2]) << std::endl;
 
 	return 1;
 }
