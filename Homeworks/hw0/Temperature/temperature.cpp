@@ -31,7 +31,7 @@ double c_ctof(const char* str) {
 	//Check if every digit is a number
 	//if not return 999
 	for (auto x : a)
-		if (x > 57 || x < 48)
+		if (x > 57 || x < 48 || x != 45)
 			return d;
 
 	//Conversion
