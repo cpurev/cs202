@@ -31,16 +31,17 @@ int main(int argc, char* argv[]) {
 	}
 	std::string str = "NULL";
 
+
 	if(argv[1] != NULL)
 		str = argv[1];
 
-	if (argv[2] != NULL)
+	if (argv[2] == NULL)
 		return 0;
 
 	if (str == "--ftoc")
-		std::cout << cpp_ftoc(argv[2]);
+		std::cout << cpp_ftoc(argv[2]) << std::endl;
 
-	else if(str == "--ctof")
-
+	else if (str == "--ctof")
+		std::cout << "ass";
 	return 1;
 }
