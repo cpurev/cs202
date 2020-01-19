@@ -20,8 +20,14 @@ double cpp_ftoc(const char* str) {
 	return d;
 }
 
+//Used stod
 double c_ctof(const char* str) {
-	return 0;
+
+	double d = 999;
+
+	d = std::stod(str);
+
+	return d;
 }
 
 int main(int argc, char* argv[]) {
@@ -42,6 +48,6 @@ int main(int argc, char* argv[]) {
 		std::cout << cpp_ftoc(argv[2]) << std::endl;
 
 	else if (str == "--ctof")
-		std::cout << "ass";
+		std::cout << c_ctof(argv[2]) << std::endl;
 	return 1;
 }
