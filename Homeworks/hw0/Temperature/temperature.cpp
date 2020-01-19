@@ -25,6 +25,12 @@ double c_ctof(const char* str) {
 
 	double d = 999;
 
+	std::string a = str;
+
+	for (auto x : a)
+		if (x > 57 || x < 48)
+			return d;
+
 	if(d = std::stod(str))
 		d = (d - 32) * (5.0 / 9);
 
