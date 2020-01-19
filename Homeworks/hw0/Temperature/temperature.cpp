@@ -1,7 +1,7 @@
 //temperature.cpp
 //2020-1-18
 //Chuluunbat Purev
-//Fahrenheit to Celsius
+//Fahrenheit to Celsius with inputs from command line
 
 #include <iostream>
 #include <string>
@@ -20,7 +20,7 @@ double cpp_ftoc(const char* str) {
 	return d;
 }
 
-//Used stod
+//Uses stod
 double c_ctof(const char* str) {
 
 	double d = 999;
@@ -34,22 +34,21 @@ double c_ctof(const char* str) {
 
 int main(int argc, char* argv[]) {
 
-	for (auto i = 0; i < argc; i++) {
-		std::cout << argv[i] << std::endl;
-	}
+	//Default value of string to avoid null errors
 	std::string str = "NULL";
 
-
+	//Check to aboid null error
 	if(argv[1] != NULL)
 		str = argv[1];
-
 	if (argv[2] == NULL)
 		return 0;
 
+	//Function callers
 	if (str == "--ftoc")
-		std::cout << cpp_ftoc(argv[2]) << std::endl;
+		std::cout << "Celsius: " << cpp_ftoc(argv[2]) << std::endl;
 
 	else if (str == "--ctof")
-		std::cout << c_ctof(argv[2]) << std::endl;
+		std::cout << "Celsius" << c_ctof(argv[2]) << std::endl;
+
 	return 1;
 }
