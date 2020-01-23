@@ -30,13 +30,12 @@ int main() {
 	std::cout << "The letters: " << std::endl;
 
 	for (auto x : a) 
-		std::cout << x << "  ";
+		std::cout << x << "|";
 
 	std::cout << std::endl;
 
 	std::cout << "The ASCII numbers: " << std::endl;
 
-	int n = a.length();
 	int i = 0;
 	char c;
 
@@ -46,7 +45,7 @@ int main() {
 		std::cout << c + 0 << "   ";
 
 		i++;
-	} while (i<n);
+	} while (i < a.length());
 
 	return 1;
 }
