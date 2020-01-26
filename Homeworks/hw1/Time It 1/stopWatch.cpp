@@ -22,3 +22,8 @@ void StopWatch::eTimeSec(double& d) {
 	std::chrono::duration<double> time = _end - _start;
 	d = time.count();
 }
+
+void StopWatch::eTimeMili(double& d) {
+	eTimeSec(d);
+	d *= 1000;
+}
