@@ -15,5 +15,9 @@ void StopWatch::Start() {
 }
 
 void StopWatch::Stop() {
-	_end = 
+	_end = std::chrono::system_clock::now();
+}
+
+void StopWatch::eTimeSec(double& d) {
+
 }
