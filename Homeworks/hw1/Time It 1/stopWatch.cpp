@@ -11,5 +11,9 @@ StopWatch::StopWatch() {
 }
 
 void StopWatch::Start() {
+	_start = std::chrono::system_clock::now();
+}
 
+void StopWatch::Stop() {
+	_end = 
 }
