@@ -18,8 +18,8 @@ public:
 	void Stop();
 
 	//Retrieve time
-	void eTimeSec(double& d);
-	void eTimeMili(double& d);
+	double eTimeSec();
+	double eTimeMili();
 private:
 	std::chrono::system_clock::time_point _start;
 	std::chrono::system_clock::time_point _end;

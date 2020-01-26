@@ -18,12 +18,11 @@ void StopWatch::Stop() {
 	_end = std::chrono::system_clock::now();
 }
 
-void StopWatch::eTimeSec(double& d) {
+double StopWatch::eTimeSec() {
 	std::chrono::duration<double> time = _end - _start;
-	d = time.count();
+	return time.count();
 }
 
-void StopWatch::eTimeMili(double& d) {
-	eTimeSec(d);
-	d *= 1000;
+double StopWatch::eTimeMili() {
+	return eTimeSec() * 1000;
 }
