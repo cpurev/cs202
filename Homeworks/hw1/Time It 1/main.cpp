@@ -9,6 +9,8 @@
 #include <algorithm>
 #include <vector>
 
+void createVector
+
 int main() {
 
 	std::random_device rd;
@@ -17,6 +19,7 @@ int main() {
 
 	int n = 0;
 	std::vector<int> v;
+	int arr[] = { 7 };
 
 	StopWatch a;
 
@@ -25,11 +28,23 @@ int main() {
 	}
 
 	std::binary_search(v.begin(), v.end(), 7);
-
 	a.Stop();
-	std::cout << "Binary search 100 items: " << a.eTimeSec(d);
+	std::cout << "Binary search 7 in  100 items: " << a.eTimeSec() << std::endl;
 
-	std::search(v.begin(), v.end(), 7);
+	a.Start();
+	std::search(v.begin(), v.end(), arr, arr+1);
+	a.Stop();
+	std::cout << "Search 7 in 100 items: " << a.eTimeSec() << std::endl;
+
+	a.Start();
+	std::find(v.begin(), v.end(), 7);
+	a.Stop();
+	std::cout << "Find 7 in 100 items: " << a.eTimeSec() << std::endl;
+
+	a.Start();
+	std::count(v.begin(), v.end(), 7);
+	a.Stop();
+	std::cout << "Count 7 in 100 items: " << a.eTimeSec() << std::endl;
 
 
 	return 1;
