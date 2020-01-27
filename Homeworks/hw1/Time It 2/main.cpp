@@ -5,72 +5,77 @@
 
 #include "stopWatch.hpp"
 #include <iostream>
-#include <random>
 #include <algorithm>
+#include <string>
+#include <fstream>
 #include <vector>
+#include <utility>
 
+void stopWatchTrials(StopWatch a, std::string filename) {
 
-void stopWatchTrials(std::vector<double>& v, int size, StopWatch a) {
+	std::ifstream file(filename);
 
-	//Clear the vector
-	v.clear();
+	if (!file) {
+		std::cout << "File error";
+		return;
+	}
 
-	//Random generators
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> dis(1, 10);
-
+	std::string str;
 
 	a.Start();
-	for (auto i = 0; i < size - v.size(); i++) {
-		v.push_back(dis(gen));
+	str.assign((std::istreambuf_iterator<char>(file)), (std::istreambuf_iterator<char>()));
+	a.Stop();
+	std::cout << "Reading a txt file to string :" << a.eTimeMili() << "ms" << std::endl;
+
+	std::vector<std::string> v;
+	std::string line;
+
+	a.Start();
+	while (std::getline(file, line)) {
+		if (line.size() > 0)
+			v.push_back(line);
 	}
 	a.Stop();
-	std::cout << "Pushing " << size << " items in to vector: " << a.eTimeSec() << std::endl;
+	std::cout << "Reading a txt file to vector :" << a.eTimeMili() << "ms" << std::endl;
 
-	int arr[] = { 7 };
-
-	a.Start();
-	std::binary_search(v.begin(), v.end(), 7);
-	a.Stop();
-	std::cout << "Binary search 7 in " << size << " items: " << a.eTimeSec() << std::endl;
+	std::pair<std::string, int> p; 
+	int i = 0;
 
 	a.Start();
-	std::search(v.begin(), v.end(), arr, arr + 1);
+	while (std::getline(file, line)) {
+		if (line.size() > 0) {
+			i++;
+			p.first = line;
+			p.second = i;
+		}
+	}
 	a.Stop();
-	std::cout << "Search 7 in "<< size << " items: " << a.eTimeSec() << std::endl;
+	std::cout << "Reading a txt file to pair :" << a.eTimeMili() << "ms" << std::endl;
 
-	a.Start();
-	std::find(v.begin(), v.end(), 7);
-	a.Stop();
-	std::cout << "Find 7 in " << size << " items: " << a.eTimeSec() << std::endl;
 
 
 }
 
 int main() {
 
-	int n = 0;
-	std::vector<double> v;
 	StopWatch a;
 
-	stopWatchTrials(v, 10000, a);
-
+	stopWatchTrials(a, "11659-8.txt");
 	std::cout << std::endl;
 
-	stopWatchTrials(v, 100000,a );
-
+	stopWatchTrials(a, "61230-0.txt");
 	std::cout << std::endl;
 
-	stopWatchTrials(v, 1000000,a );
-
+	stopWatchTrials(a, "61231-0.txt");
 	std::cout << std::endl;
 
-	stopWatchTrials(v, 10000000, a);
-
+	stopWatchTrials(a, "61234-0.txt");
 	std::cout << std::endl;
 
-	stopWatchTrials(v, 100000000, a);
+	stopWatchTrials(a, "61236-0.txt");
+	std::cout << std::endl;
+
+
 
 	return 1;
 }
