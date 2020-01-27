@@ -33,17 +33,17 @@ void stopWatchTrials(std::vector<double>& v, int size, StopWatch a) {
 	a.Start();
 	std::binary_search(v.begin(), v.end(), 7);
 	a.Stop();
-	std::cout << "Binary search 7 in " << size << " items: " << a.eTimeSec() << std::endl;
+	std::cout << "Binary search 7 in " << size << " items: " << a.eTimeMili() << "ms" << std::endl;
 
 	a.Start();
 	std::search(v.begin(), v.end(), arr, arr + 1);
 	a.Stop();
-	std::cout << "Search 7 in "<< size << " items: " << a.eTimeSec() << std::endl;
+	std::cout << "Search 7 in "<< size << " items: " << a.eTimeMili() << "ms" << std::endl;
 
 	a.Start();
 	std::find(v.begin(), v.end(), 7);
 	a.Stop();
-	std::cout << "Find 7 in " << size << " items: " << a.eTimeSec() << std::endl;
+	std::cout << "Find 7 in " << size << " items: " << a.eTimeMili() << "ms" << std::endl;
 
 
 }
