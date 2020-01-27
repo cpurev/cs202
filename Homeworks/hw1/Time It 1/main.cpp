@@ -9,13 +9,17 @@
 #include <algorithm>
 #include <vector>
 
+
 void stopWatchTrials(std::vector<double>& v, int size, StopWatch a) {
 
+	//Clear the vector
 	v.clear();
 
+	//Random generators
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(1, 10);
+
 
 	a.Start();
 	for (auto i = 0; i < size - v.size(); i++) {
