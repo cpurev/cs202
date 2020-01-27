@@ -20,6 +20,7 @@ void stopWatchTrials(StopWatch a, std::string filename) {
 		return;
 	}
 
+	//
 	std::string str;
 
 	a.Start();
@@ -27,6 +28,7 @@ void stopWatchTrials(StopWatch a, std::string filename) {
 	a.Stop();
 	std::cout << "Reading a txt file to string :" << a.eTimeMili() << "ms" << std::endl;
 
+	//
 	std::vector<std::string> v;
 	std::string line;
 
@@ -41,6 +43,7 @@ void stopWatchTrials(StopWatch a, std::string filename) {
 	std::pair<std::string, int> p; 
 	int i = 0;
 
+	//
 	a.Start();
 	while (std::getline(file, line)) {
 		if (line.size() > 0) {
@@ -51,6 +54,14 @@ void stopWatchTrials(StopWatch a, std::string filename) {
 	}
 	a.Stop();
 	std::cout << "Reading a txt file to pair :" << a.eTimeMili() << "ms" << std::endl;
+
+	//
+	a.Start();
+	str.find("yabba");
+	a.Stop();
+	std::cout << "Searching yabba in string :" << a.eTimeMili() << "ms" << std::endl;
+
+	//
 
 
 
