@@ -26,7 +26,7 @@ void stopWatchTrials(std::vector<double>& v, int size, StopWatch a) {
 		v.push_back(dis(gen));
 	}
 	a.Stop();
-	std::cout << "Pushing " << size << " items in to vector: " << a.eTimeSec() << "ms" << std::endl;
+	std::cout << "Pushing " << size << " items in to vector: " << a.eTimeMili() << "ms" << std::endl;
 
 	int arr[] = { 7 };
 
