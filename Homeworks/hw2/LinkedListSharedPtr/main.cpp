@@ -24,6 +24,15 @@ TEST_CASE("TESTING COLORS.HPP", "[colors]") {
 		REQUIRE(list.front()->str != Col[0].str);
 
 	}
+
+	SECTION("STACK: LAST IN FIRST OUT") {
+		pushStack(list, c);
+		REQUIRE(list.back()->str == c.str);
+
+		popStack(list);
+		REQUIRE(list.front()->str != Col[0].str);
+
+	}
 }
 
 
