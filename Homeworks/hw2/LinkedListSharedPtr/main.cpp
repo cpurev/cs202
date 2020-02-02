@@ -19,6 +19,14 @@ void popQueue(std::list<std::shared_ptr<Value>>& list) {
 	list.pop_front();
 }
 
+void pushStack(std::list<std::shared_ptr<Value>>& list, const Value& val) {
+	addQueue(list, val);
+}
+
+void popStack(std::list<std::shared_ptr<Value>>& list) {
+	list.pop_back();
+}
+
 int main() {
 
 	Value Val[] = {"GREEN", "RED", "BLUE", "YELLOW", "BLACK", "WHITE"};
