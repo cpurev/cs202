@@ -8,20 +8,20 @@
 #include <list>
 #include <iostream>
 
-struct Value {
+struct Colors {
 	std::string str;
 };
 
-void addQueue(std::list<std::shared_ptr<Value>>& list, const Value& val);
+void addQueue(std::list<std::shared_ptr<Colors>>& list, const Colors& val);
 
-void popQueue(std::list<std::shared_ptr<Value>>& list);
+void popQueue(std::list<std::shared_ptr<Colors>>& list);
 
-void pushStack(std::list<std::shared_ptr<Value>>& list, const Value& val);
+void pushStack(std::list<std::shared_ptr<Colors>>& list, const Colors& val);
 
-void popStack(std::list<std::shared_ptr<Value>>& list);
+void popStack(std::list<std::shared_ptr<Colors>>& list);
 
-void insert(std::list<std::shared_ptr<Value>>& list, const Value& val, std::list<std::shared_ptr<Value>>::iterator n);
-bool find(const std::list<std::shared_ptr<Value>>& list, const Value& val);
+void insert(std::list<std::shared_ptr<Colors>>& list, const Colors& val, std::list<std::shared_ptr<Colors>>::iterator n);
+bool find(const std::list<std::shared_ptr<Colors>>& list, const Colors& val);
 
 #endif // !COLORS_LINKED_HPP
 

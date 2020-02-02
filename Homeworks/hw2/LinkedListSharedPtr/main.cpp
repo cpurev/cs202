@@ -3,22 +3,22 @@
 //Chuluunbat Purev
 //Linked List with Shared Pointer and catch2.hpp
 
+#define CATCH_CONFIG_MAIN
+
 #include "colors.hpp"
+#include <catch2/catch.hpp>
 
-int main() {
-
-	/*Value Val[] = { "GREEN", "RED", "BLUE", "YELLOW", "BLACK", "WHITE" };
-	std::list<std::shared_ptr<Value>> list;
-
-	for (auto i : Val)
-		addQueue(list, i);
-
-	for (auto x : list)
-		std::cout << x->str << std::endl;
-
-	if (find(list, Val[3]))
-		std::cout << Val[3].str << std::endl;*/
+Colors Col[] = { "GREEN", "RED", "BLUE", "YELLOW", "BLACK", "WHITE" };
+std::list<std::shared_ptr<Colors>> list;
 
 
-	return 1;
+TEST_CASE("QUEUE: FIRST IN FIRST OUT", "[queue]") {
+	REQUIRE(find(list, Col[2]) == true);
 }
+
+
+//int main() {
+//
+//
+//	return 1;
+//}

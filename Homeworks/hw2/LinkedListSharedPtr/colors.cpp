@@ -5,34 +5,27 @@
 
 #include "colors.hpp"
 
-#include <catch2/catch.hpp>
-
-TEST_CASE("QUEUE: FIRST IN FIRST OUT", "[queue]") {
-	REQUIRE();
+void addQueue(std::list<std::shared_ptr<Colors>>& list, const Colors& val) {
+	list.push_back(std::make_shared<Colors>(val));
 }
 
-
-void addQueue(std::list<std::shared_ptr<Value>>& list, const Value& val) {
-	list.push_back(std::make_shared<Value>(val));
-}
-
-void popQueue(std::list<std::shared_ptr<Value>>& list) {
+void popQueue(std::list<std::shared_ptr<Colors>>& list) {
 	list.pop_front();
 }
 
-void pushStack(std::list<std::shared_ptr<Value>>& list, const Value& val) {
+void pushStack(std::list<std::shared_ptr<Colors>>& list, const Colors& val) {
 	addQueue(list, val);
 }
 
-void popStack(std::list<std::shared_ptr<Value>>& list) {
+void popStack(std::list<std::shared_ptr<Colors>>& list) {
 	list.pop_back();
 }
 
-void insert(std::list<std::shared_ptr<Value>>& list, const Value& val, std::list<std::shared_ptr<Value>>::iterator n) {
-	list.insert(n, std::make_shared<Value>(val));
+void insert(std::list<std::shared_ptr<Colors>>& list, const Colors& val, std::list<std::shared_ptr<Colors>>::iterator n) {
+	list.insert(n, std::make_shared<Colors>(val));
 }
 
-bool find(const std::list<std::shared_ptr<Value>>& list, const Value& val) {
+bool find(const std::list<std::shared_ptr<Colors>>& list, const Colors& val) {
 	for (auto x : list) {
 		if (x->str == val.str)
 			return true;
