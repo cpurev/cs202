@@ -3,10 +3,11 @@
 //Chuluunbat Purev
 //Colors with list type shared_ptr
 
-#ifndef COLORS_LINKED_HPP
-#define COLORS_LINKED_HPP
 #include <list>
 #include <iostream>
+
+#ifndef COLORS_LINKED_HPP
+#define COLORS_LINKED_HPP
 
 struct Colors {
 	std::string str;

@@ -11,8 +11,9 @@
 Colors Col[] = { "GREEN", "RED", "BLUE", "YELLOW", "BLACK", "WHITE" };
 std::list<std::shared_ptr<Colors>> list;
 
-
 TEST_CASE("QUEUE: FIRST IN FIRST OUT", "[queue]") {
+	for(auto x : Col)
+		addQueue(list, x);
 	REQUIRE(find(list, Col[2]) == true);
 }
 
