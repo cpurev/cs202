@@ -9,24 +9,35 @@
 
 struct Value {
 	std::string str;
-
 };
 
 
 int main() {
 
 	Value Val;
-	std::list<Value> list;
+
+	std::list<std::shared_ptr<Value>> list;
+
+	Val.str = "RED";
+	list.push_back(std::make_shared<Value>(Val));
 
 	Val.str = "GREEN";
-	list.push_back(Val);
-	Val.str = "RED";
-	list.push_back(Val);
+	list.push_back(std::make_shared<Value>(Val));
+
 	Val.str = "BLUE";
-	list.push_back(Val);
+	list.push_back(std::make_shared<Value>(Val));
+
+	Val.str = "YELLOW";
+	list.push_back(std::make_shared<Value>(Val));
+
+	Val.str = "BLACK";
+	list.push_back(std::make_shared<Value>(Val));
+
+	Val.str = "WHITE";
+	list.push_back(std::make_shared<Value>(Val));
 
 	for (auto x : list)
-		std::cout << x.str << std::endl;
+		std::cout << x->str << std::endl;
 
 	return 1;
 }
