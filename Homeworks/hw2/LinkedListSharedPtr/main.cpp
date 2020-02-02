@@ -11,6 +11,8 @@
 Colors Col[] = { "GREEN", "RED", "BLUE", "YELLOW", "BLACK", "WHITE" };
 std::list<std::shared_ptr<Colors>> list;
 Colors c = { "ORANGE" };
+Colors d = { "DARK" };
+Colors e = { "EWO" };
 
 TEST_CASE("TESTING COLORS.HPP", "[colors]") {
 	for(auto x : Col)
@@ -32,6 +34,13 @@ TEST_CASE("TESTING COLORS.HPP", "[colors]") {
 		popStack(list);
 		REQUIRE(list.front()->str != Col[0].str);
 
+	}
+
+	SECTION("Insert and Find") {
+		insert(list, e, list.begin());
+		REQUIRE(list.front()->str == e.str);
+
+		REQUIRE(find(list, d) != true);
 	}
 }
 

@@ -24,5 +24,7 @@ void popStack(std::list<std::shared_ptr<Colors>>& list);
 void insert(std::list<std::shared_ptr<Colors>>& list, const Colors& val, std::list<std::shared_ptr<Colors>>::iterator n);
 bool find(const std::list<std::shared_ptr<Colors>>& list, const Colors& val);
 
+void print(std::list<std::shared_ptr<Colors>>& list);
+
 #endif // !COLORS_LINKED_HPP
 
