@@ -27,6 +27,12 @@ void popStack(std::list<std::shared_ptr<Value>>& list) {
 	list.pop_back();
 }
 
+void insert(std::list<std::shared_ptr<Value>>& list, const Value& val, std::list<std::shared_ptr<Value>>::iterator n) {
+	list.insert(n, std::make_shared<Value>(val));
+}
+
+
+
 int main() {
 
 	Value Val[] = {"GREEN", "RED", "BLUE", "YELLOW", "BLACK", "WHITE"};
