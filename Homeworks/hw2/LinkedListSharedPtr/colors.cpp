@@ -32,3 +32,9 @@ bool find(const std::list<std::shared_ptr<Colors>>& list, const Colors& val) {
 	}
 	return false;
 }
+
+void print(std::list<std::shared_ptr<Colors>>& list) {
+	for (auto x : list)
+		std::cout << x << " ";
+	std::cout << std::endl;
+}
