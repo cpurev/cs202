@@ -31,7 +31,13 @@ void insert(std::list<std::shared_ptr<Value>>& list, const Value& val, std::list
 	list.insert(n, std::make_shared<Value>(val));
 }
 
-
+bool find(const std::list<std::shared_ptr<Value>>& list, const Value& val) {
+	for (auto x : list) {
+		if (x->str == val.str)
+			return true;
+	}
+	return false;
+}
 
 int main() {
 
@@ -44,6 +50,9 @@ int main() {
 
 	for (auto x : list)
 		std::cout << x->str << std::endl;
+
+	if (find(list, Val[3]))
+		std::cout << Val[3].str << std::endl;
 
 	return 1;
 }
