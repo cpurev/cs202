@@ -15,6 +15,10 @@ void addQueue(std::list<std::shared_ptr<Value>>& list, const Value& val) {
 	list.push_back(std::make_shared<Value>(val));
 }
 
+void popQueue(std::list<std::shared_ptr<Value>>& list) {
+	list.pop_front();
+}
+
 int main() {
 
 	Value Val[] = {"GREEN", "RED", "BLUE", "YELLOW", "BLACK", "WHITE"};
