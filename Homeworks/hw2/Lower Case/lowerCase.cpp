@@ -9,7 +9,8 @@ int main() {
 
 	const char* c = "HeLlO WoRld!";
 
-	
+	for (auto i = 0; i < strlen(c); i++)
+		std::cout << c[i] << " ";
 
 	return 1;
 }
