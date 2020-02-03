@@ -9,7 +9,9 @@ int main() {
 
 	//Its const so we canat modify this
 	const char* c = "HeLlO WoRld!";
+	std::cout << "The word is: " << c << std::endl;
 
+	std::cout << "In lower case: ";
 	//Lenght of the c
 	for (auto i = 0; i < strlen(c); i++) {
 		//ASCII code for upper case letters
