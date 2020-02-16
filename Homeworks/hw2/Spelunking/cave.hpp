@@ -63,7 +63,7 @@ private:
 	};
 
 	using CaveNodePtr = std::shared_ptr<CaveNode>;
-	std::vector<CaveNodePtr> caveRooms; 
+	std::vector<CaveNodePtr> caveRooms;		
 	int currentRoom;
 
 };
