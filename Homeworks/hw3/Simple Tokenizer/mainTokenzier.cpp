@@ -52,6 +52,7 @@ bool readLine(std::istream& is, std::vector<std::string>& tokens,
 		if (line == "" || line == "\n") {
 			tokens.push_back("blank line");
 			linecols.push_back(std::make_pair(rows, cols ));
+			++rows;
 			continue;
 		}
 
