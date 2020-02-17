@@ -77,7 +77,7 @@ void printTokens(std::ostream& os, std::vector<std::string>& tokens, std::vector
 
 int main(int argc, char *argv[]) {
 
-	std::ifstream file("test.txt");
+	/*std::ifstream file("test.txt");
 
 	if (!file) {
 		std::cout << "File error!";
@@ -86,13 +86,14 @@ int main(int argc, char *argv[]) {
 	std::vector<std::string> tokens; 
 	std::vector<std::pair<int, int>> linecols;
 
-	//tokens.push_back("asd");
-
-	//std::cout << tokens[0];
 
 	readLine(file, tokens, linecols);
 
-	printTokens(std::cout, tokens, linecols);
+	printTokens(std::cout, tokens, linecols);*/
+
+	for (auto i = 0; i < argc; i++) {
+		std::cout << argv[i] << std::endl;
+	}
 
 	return 1;
 }
