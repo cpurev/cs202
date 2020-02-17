@@ -8,17 +8,24 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <iomanip>
+#include "stopWatch.hpp"
 
 //Lines to tokens
-//Wont use this function so i left it
 bool lineToTokens(const std::string& line, std::vector<std::string>& tokens) {
 
-	//if (line == "") {
-	//	tokens.push_back("blank line");
-	//	return true;
-	//}
+	if (line == "") {
+		tokens.push_back("blank line");
+		return true;
+	}
 
+	std::istringstream is(line);
+	std::string str;
 
+	do {
+		is >> str;
+		tokens.push_back(str);
+	} while (is);
 
 	return true;
 }
@@ -63,37 +70,62 @@ bool readLine(std::istream& is, std::vector<std::string>& tokens, std::vector<st
 
 	}
 
-	return false;
+	return true;
 }
 
 //Print tokens in the given format with their corresponding column and rows
 void printTokens(std::ostream& os, std::vector<std::string>& tokens, std::vector<std::pair<int, int>>& linecols) {
 
 	for (auto i = 0; i < tokens.size(); i++) {
-		std::cout << "Line " << linecols[i].first << ", Column " << linecols[i].second << ": \"" << tokens[i] << "\"\n";
+		std::cout << std::setw(5) << "Line " << linecols[i].first << ", Column " << linecols[i].second << ": \"" << tokens[i] << "\"\n";
 	}
 
 }
 
 int main(int argc, char *argv[]) {
 
-	/*std::ifstream file("test.txt");
+	StopWatch sw;
+
+	if (argc == 1)
+		return 0;
+
+	std::ifstream file(argv[1]);
 
 	if (!file) {
 		std::cout << "File error!";
 		return 0;
 	}
-	std::vector<std::string> tokens; 
+
+	std::vector<std::string> tokens;
 	std::vector<std::pair<int, int>> linecols;
 
-
-	readLine(file, tokens, linecols);
-
-	printTokens(std::cout, tokens, linecols);*/
-
-	for (auto i = 0; i < argc; i++) {
-		std::cout << argv[i] << std::endl;
+	int n = 0;
+	std::string line;
+	if (argv[2] != NULL)
+		line = argv[2];
+	if (line == "--lineonly") {
+		line = "";
+		sw.Start();
+		while (std::getline(file, line)) {
+			lineToTokens(line, tokens);
+			++n;
+		}
+		sw.Stop();
+		std::cout << "Time it took to read" << n << " lines to tokens: " << sw.eTimeSec() << "s";
+		return 1;
 	}
+
+	double d;
+
+	sw.Start();
+	readLine(file, tokens, linecols);
+	sw.Stop();
+	d = sw.eTimeSec();
+	sw.Start();
+	printTokens(std::cout, tokens, linecols);
+	sw.Stop();
+
+	std::cout << std::endl << "Time it took to read and tokenize: " << d << "s\n" << "Time it took to print: " << sw.eTimeSec() << "s\n";
 
 	return 1;
 }
