@@ -66,6 +66,7 @@ bool readLine(std::istream& is, std::vector<std::string>& tokens, std::vector<st
 	return false;
 }
 
+//Print tokens in the given format with their corresponding column and rows
 void printTokens(std::ostream& os, std::vector<std::string>& tokens, std::vector<std::pair<int, int>>& linecols) {
 
 	for (auto i = 0; i < tokens.size(); i++) {
