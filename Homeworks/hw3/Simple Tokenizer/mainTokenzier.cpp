@@ -9,12 +9,14 @@
 #include <iostream>
 #include <vector>
 
+//Lines to tokens
+//Wont use this function so i left it
 bool lineToTokens(const std::string& line, std::vector<std::string>& tokens) {
 
-	if (line == "") {
-		tokens.push_back("blank line");
-		return true;
-	}
+	//if (line == "") {
+	//	tokens.push_back("blank line");
+	//	return true;
+	//}
 
 
 
