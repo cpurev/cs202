@@ -22,6 +22,7 @@ int main(int argc, char* argv[]) {
 
 	std::vector<std::string> paragraphs;
 	std::string line;
+	std::string arg;
 
 	//Init file
 	std::ifstream file("test.txt");
@@ -31,7 +32,7 @@ int main(int argc, char* argv[]) {
 	}
 
 	if(argv[2] != NULL)
-		line = argv[2];
+		arg = argv[2];
 	else {
 		std::cout << "TO DO WHAT?";
 		return 0;
@@ -43,11 +44,12 @@ int main(int argc, char* argv[]) {
 
 	if (line == "--html")
 		goto html;
-	if (is_number(line))
+	if (is_number(arg))
 			goto wrapping;
 
 	int wrap;
 wrapping: {
+	wrap = std::stoi(arg);
 	for (auto i = 0; i < paragraphs.size(); i++) {
 		wrap = paragraphs[i].length() + 1;
 		if (wrap >= 40) {
