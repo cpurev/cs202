@@ -18,5 +18,13 @@
     <ClCompile Include="mainPretty.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="simpleTokenizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="simpleTokenizer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

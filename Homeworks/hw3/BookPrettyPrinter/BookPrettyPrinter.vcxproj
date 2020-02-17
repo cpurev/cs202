@@ -124,6 +124,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="mainPretty.cpp" />
+    <ClCompile Include="simpleTokenizer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="simpleTokenizer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
