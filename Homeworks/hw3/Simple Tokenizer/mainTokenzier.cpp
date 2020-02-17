@@ -16,13 +16,7 @@ bool lineToTokens(const std::string& line, std::vector<std::string>& tokens) {
 		return true;
 	}
 
-	std::istringstream iss(line);
 
-	do {
-		std::string str;
-		iss >> str;
-		tokens.push_back(str);
-	} while (iss);
 
 	return true;
 }
@@ -30,18 +24,41 @@ bool lineToTokens(const std::string& line, std::vector<std::string>& tokens) {
 bool readLine(std::istream& is, std::vector<std::string>& tokens, std::vector<std::pair<int, int>>& linecols) {
 
 	std::string line;
-	int cols= 0, rows = 0;
+	int cols, rows = 1;
+	std::string str;
 
 	while (std::getline(is, line)) {
-		cols = tokens.size();
+		cols = 1;
 
-		lineToTokens(line, tokens);
+		if (line == "" || line == "\n") {
+			tokens.push_back("blank line");
+			linecols.push_back(std::make_pair(rows, cols ));
+		}
+		for (auto l : line) {
 
-		cols = tokens.size() - cols;
+			if (l != ' ') {
+				str += l;
 
-		++rows;
+			}
+			else {
+				if (str.length() != 0) {
+					tokens.push_back(str);
+					linecols.push_back(std::make_pair(rows, cols- str.length()));
+				}
+				str = "";
+			}
+			++cols;
 
-		linecols.push_back(std::make_pair(rows, cols));
+		}
+
+		if (str.length() != 0) {
+			tokens.push_back(str);
+			linecols.push_back(std::make_pair(rows, cols - str.length()));
+		}
+		str = "";
+
+		rows++;
+
 	}
 
 	return false;
@@ -49,11 +66,10 @@ bool readLine(std::istream& is, std::vector<std::string>& tokens, std::vector<st
 
 void printTokens(std::ostream& os, std::vector<std::string>& tokens, std::vector<std::pair<int, int>>& linecols) {
 
-	for (auto v : linecols) {
-		for (auto i = 1; i <= v.second; i++) {
-			std::cout << "Line " << v.first << ", Column " << i << ": \"" << tokens[v.first * i] << "\"\n";
-		}
+	for (auto i = 0; i < tokens.size(); i++) {
+		std::cout << "Line " << linecols[i].first << ", Column " << linecols[i].second << ": \"" << tokens[i] << "\"\n";
 	}
+
 }
 
 int main(int argc, char *argv[]) {
@@ -69,7 +85,7 @@ int main(int argc, char *argv[]) {
 
 	//tokens.push_back("asd");
 
-	//std::cout << tokens.size();
+	//std::cout << tokens[0];
 
 	readLine(file, tokens, linecols);
 
