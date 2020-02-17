@@ -128,6 +128,7 @@
     <ClCompile Include="stopWatch.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="simpleTokenizer.hpp" />
     <ClInclude Include="stopWatch.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
