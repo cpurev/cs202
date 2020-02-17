@@ -7,26 +7,32 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
+#include <iterator>
 
 //Lines to tokens
 bool lineToTokens(const std::string& line, std::vector<std::string>& tokens) {
 
 	//Save newline as blank line
-	if (line == "") {
-		tokens.push_back("blank line");
-		return true;
-	}
+	//if (line == "") {
+	//	tokens.push_back("blank line");
+	//	return true;
+	//}
 
 	//Ignoring whitespaces
 	//Puting all the values in line to tokens
-	std::istringstream is(line);
 	std::string str;
 
-	do {
-		is >> str;
-		tokens.push_back(str);
-	} while (is);
+	for (auto l : line) {
+		if (l == ' ') {
+			tokens.push_back(str);
+			str = "";
+		}
+		else 
+			str += l;
+	}
 
+	if(str.length() != 0)
+		tokens.push_back(str);
 	return true;
 }
 

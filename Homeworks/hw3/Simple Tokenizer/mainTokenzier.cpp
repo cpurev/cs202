@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
 			++n;
 		}
 		sw.Stop();
-		std::cout << "Time it took to read " << n << " lines to tokens: " << sw.eTimeSec() << "s";
+		std::cout << "Time it took to read " << n << " lines to tokens: " << sw.eTimeSec() << "/s";
 		return 1;
 	}
 	else
@@ -67,7 +67,7 @@ notLineOnly:{
 	printTokens(std::cout, tokens, linecols);
 	sw.Stop();
 
-	std::cout << std::endl << "Time it took to read and tokenize: " << d << "s\n" << "Time it took to print: " << sw.eTimeSec() << "s\n";
+	std::cout << std::endl << "Time it took to read and tokenize: " << file.tellg()/d << "Mb/s\n" << "Speed: " << file.tellg()/sw.eTimeSec() << "Mb/s\n";
 }
 	return 1;
 }

@@ -16,6 +16,9 @@ bool is_number(const std::string& s)
 
 int main(int argc, char* argv[]) {
 
+	int wrap = 0;
+	int size = 0;
+
 	//Exit if no arguments
 	if (argc == 1)
 		return 0;
@@ -23,6 +26,7 @@ int main(int argc, char* argv[]) {
 	std::vector<std::string> paragraphs;
 	std::string line;
 	std::string arg;
+	std::string temp;
 
 	//Init file
 	std::ifstream file("test.txt");
@@ -38,26 +42,38 @@ int main(int argc, char* argv[]) {
 		return 0;
 	}
 
+	std::string str;
+
 	while (std::getline(file, line)) {
+		if (line == "")
+			paragraphs.push_back("\n");
 		lineToTokens(line, paragraphs);
 	}
 
 	if (line == "--html")
 		goto html;
 	if (is_number(arg))
-			goto wrapping;
+		goto wrapping;
+	return 1;
 
-	int wrap;
 wrapping: {
 	wrap = std::stoi(arg);
-	for (auto i = 0; i < paragraphs.size(); i++) {
-		wrap = paragraphs[i].length() + 1;
-		if (wrap >= 40) {
-			i--;
+	for (auto v : paragraphs) {
+		if (temp.length() + v.length() >= wrap) {
+			std::cout << temp << std::endl;
+			temp = v + " ";
 			continue;
 		}
-		std::cout << paragraphs[i] << " ";
+
+		temp += v;
+		
+		if (temp.size() != wrap)
+			temp += " ";
+
+
 	}
+	std::cout << temp;
+	return 1;
 }
 html: {
 	
