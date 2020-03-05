@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Wumpus.cpp" />
+    <ClCompile Include="wumpusCave.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="wumpusCave.hpp" />

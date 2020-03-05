@@ -18,6 +18,9 @@
     <ClCompile Include="Wumpus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="wumpusCave.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="wumpusCave.hpp">
