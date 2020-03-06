@@ -81,5 +81,7 @@ void Cave::initRooms() {
 		std::cout << std::endl;
 	}
 
+	std::cout << wumpus << std::endl;
+
 
 }

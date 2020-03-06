@@ -9,7 +9,7 @@
 class Cave {
 public:
 
-	~Cave();
+	//~Cave();
 
 	//Connects the rooms randomly
 	void connectRooms();
