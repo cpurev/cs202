@@ -25,10 +25,9 @@ private:
 
 		std::weak_ptr<CaveNode> rooms[MaxAdjacentRooms];
 
-		std::string shortdesc; // a short description of this room
+		std::string desc = ""; // a long description of this room
 
-		std::string longdesc; // a long description of this room
-
+		bool bats = false , pit = false, wump = false;
 		// constructor should initialize rooms to nullptr
 
 		CaveNode();
@@ -36,7 +35,8 @@ private:
 	};
 
 
-	std::vector<std::shared_ptr<CaveNode>> caveRooms;
+	//std::vector<std::shared_ptr<CaveNode>> caveRooms;
+	CaveNode* caveRooms[20];
 
 	int currentRoom;
 
