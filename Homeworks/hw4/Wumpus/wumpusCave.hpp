@@ -30,7 +30,7 @@ private:
 
 		//Adjacent Rooms Pointer
 		//std::shared_ptr<CaveNode> rooms[MaxAdjacentRooms];
-		std::weak_ptr<CaveNode> rooms[MaxAdjacentRooms];
+		int rooms[MaxAdjacentRooms] = {-1, -1, -1};
 
 		//Number of room connections
 		int con = 0;
@@ -50,10 +50,10 @@ private:
 	};
 
 
-	std::vector<std::shared_ptr<CaveNode>> caveRooms;
-
+	//std::vector<std::shared_ptr<CaveNode>> caveRooms;
 	//Cave Rooms
 	//CaveNode caveRooms[21] = {};
+	std::vector<CaveNode> caveRooms;
 
 	int currentRoom = 0;
 

@@ -11,7 +11,7 @@ int main(void) {
 
 	cave.initRooms();
 
-//	cave.connectRooms();
+	cave.connectRooms();
 
 	cave.printRooms();
 
