@@ -31,6 +31,7 @@ void Cave::printRooms() {
 
 }
 
+//Connects rooms randomly
 void Cave::connectRooms() {
 
 	//Random generator
