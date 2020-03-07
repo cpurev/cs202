@@ -5,16 +5,60 @@
 
 #include "wumpusCave.hpp"
 #include <random>
+#include <string>
 
 Cave::Cave() : currentRoom(0){
 	for (auto i = 0; i < 20; i++) {
+		std::string str("This is room: " + std::to_string(i));
 		CaveNode cn;
+		cn.desc = str;
 		caveRooms[i] = cn;
 	}
 }
 
+void Cave::printRooms() {
+	for (auto i = 0; i < 20; i++) {
+		std::cout << caveRooms[i].desc << std::endl;
+	}
+
+}
+
 void Cave::connectRooms() {
 
+	//Random generator
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<int> dis(1, 20);
+
+	int temp = dis(gen);
+	int count = 0;
+
+	caveRooms[0].rooms[0] = std::make_shared<CaveNode>(caveRooms[temp]);
+	caveRooms[0].rooms[temp] = std::make_shared<CaveNode>(caveRooms[0]);
+
+	temp = dis(gen);
+
+	caveRooms[0].rooms[1] = std::make_shared<CaveNode>(caveRooms[temp]);
+	caveRooms[0].rooms[temp] = std::make_shared<CaveNode>(caveRooms[1]);
+
+	temp = dis(gen);
+
+	caveRooms[0].rooms[2] = std::make_shared<CaveNode>(caveRooms[temp]);
+	caveRooms[0].rooms[temp] = std::make_shared<CaveNode>(caveRooms[3]);
+
+	caveRooms->rooms[1] = std::make_shared<CaveNode>(caveRooms[dis(gen)]);
+
+	for (auto i = 0; i <= 20; i++) {
+		temp = dis(gen);
+
+		while (true) {
+			if(caveRooms[i].rooms[count] != nullptr)
+		}
+
+		caveRooms[i].rooms[1] = std::make_shared<CaveNode>(caveRooms[temp]);
+		caveRooms[temp].rooms[temp] = std::make_shared<CaveNode>(caveRooms[1]);
+
+	}
 }
 
 void Cave::initRooms() {
@@ -22,7 +66,7 @@ void Cave::initRooms() {
 	//Random generator
 	std::random_device rd;
 	std::mt19937 gen(rd());
-	std::uniform_int_distribution<int> dis(1, 19);
+	std::uniform_int_distribution<int> dis(1, 20);
 
 	//Bat and pits location
 	int locBatPit[2][3] = { {0, 0, 0}, {0, 0, 0} };
@@ -85,18 +129,18 @@ void Cave::initRooms() {
 	caveRooms[locBatPit[1][2]].pit = true;
 
 
-	for (int i = 0; i < 2; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			std::cout << locBatPit[i][j] << " ";
-		}
+	//for (int i = 0; i < 2; i++)
+	//{
+	//	for (int j = 0; j < 3; j++)
+	//	{
+	//		std::cout << locBatPit[i][j] << " ";
+	//	}
 
-		// Newline for new row 
-		std::cout << std::endl;
-	}
+	//	// Newline for new row 
+	//	std::cout << std::endl;
+	//}
 
-	std::cout << wumpus << std::endl;
+	//std::cout << wumpus << std::endl;
 
 
 }

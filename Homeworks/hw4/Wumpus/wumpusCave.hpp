@@ -3,8 +3,8 @@
 #ifndef WUMPUS_CAVE
 #define WUMPUS_CAVE
 
-#include <iostream>
 #include <vector>
+#include <iostream>
 
 class Cave {
 public:
@@ -18,6 +18,9 @@ public:
 
 	//Initilize the rooms with their description
 	void initRooms();
+
+	//Just print rooms
+	void printRooms();
 
 private:
 
@@ -38,7 +41,7 @@ private:
 
 
 	//std::vector<std::shared_ptr<CaveNode>> caveRooms;
-	CaveNode caveRooms[20] = {};
+	CaveNode caveRooms[21] = {};
 
 	int currentRoom = 0;
 
