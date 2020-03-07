@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include "stopWatch.hpp"
+#include <iomanip>
 
 //Fibonacci with recursion
 unsigned int fibonacci(int n) {
@@ -46,11 +47,32 @@ unsigned int ackerman(int m, int n) {
 int main(void) {
 
 	StopWatch sw;
-	
+	unsigned int a;
+
 	sw.Start();
-	std::cout << fibonacci(100);
+	a = fibonacci(10);
 	sw.Stop();
-	std::cout << "Fibonacci Re"
+	std::cout << std::setw(11) << "Fibonacci Recursion of 10: " << a << ", " << sw.eTimeMili() << "ms\n";
+
+	sw.Start();
+	a = fibonacci_l(10);
+	sw.Stop();
+	std::cout << "Fibonacci Loop of 10: " << std::setw(7) << a << ", " << sw.eTimeMili() << "ms\n";
+
+	sw.Start();
+	a = factorial(10);
+	sw.Stop();
+	std::cout << std::setw(11) << "Factorial Recursion of 10: " << a << ", " << sw.eTimeMili() << "ms\n";
+
+	sw.Start();
+	a = factorial_l(10);
+	sw.Stop();
+	std::cout << std::setw(11) << "Factorial Recursion of 10: " << a << ", " << sw.eTimeMili() << "ms\n";
+
+	sw.Start();
+	a = ackerman(3, 3);
+	sw.Stop();
+	std::cout << std::setw(11) << "Ackerman's Recursion of (3,3): " << a << ", " << sw.eTimeMili() << "ms\n";
 
 	return 1;
 }
