@@ -9,6 +9,8 @@
 class Cave {
 public:
 
+	bool playerState, wumpState, arrows;
+
 	Cave();
 
 	//~Cave();
@@ -22,13 +24,19 @@ public:
 	//Just print rooms
 	void printRooms();
 
-	bool play();
-
 	int getCurrentRoom();
+
+	int hazard();
 
 	int hazardHint();
 
+	std::string getAdjRooms();
+
 	void gotoRoom(int room);
+
+	bool playerMove(int room);
+
+	void playerShoot(int room);
 
 private:
 

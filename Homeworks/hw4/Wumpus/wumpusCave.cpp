@@ -13,7 +13,9 @@ std::random_device rd;
 std::mt19937 gen(rd());
 std::uniform_int_distribution<int> dis(1, 19);
 
-Cave::Cave() : currentRoom(0){
+int wumpusRoom;
+
+Cave::Cave() : currentRoom(0), playerState(true), wumpState(true), arrows(5){
 	for (auto i = 0; i < 20; i++) {
 		std::string str("This is room: " + std::to_string(i));
 		CaveNode cn;
@@ -25,13 +27,28 @@ Cave::Cave() : currentRoom(0){
 
 int Cave::getCurrentRoom() { return currentRoom; }
 
-int Cave::hazardHint() { 
+std::string Cave::getAdjRooms() {
+	return std::to_string(caveRooms[currentRoom].rooms[0]) +  " " + std::to_string(caveRooms[currentRoom].rooms[1]) + " " + 
+		std::to_string(caveRooms[currentRoom].rooms[2]) + "n";
+}
+
+int Cave::hazard() { 
 	if (caveRooms[currentRoom].bats && caveRooms[currentRoom].pit)
 		return -1;
 	if (caveRooms[currentRoom].bats)
 		return 0;
 	if (caveRooms[currentRoom].pit)
 		return 1;
+	return 0;
+}
+
+int Cave::hazardHint() {
+	if (caveRooms[caveRooms[currentRoom].rooms[1]].bats)
+		return 0;
+	if (caveRooms[caveRooms[currentRoom].rooms[2]].pit)
+		return 1;
+	if (caveRooms[caveRooms[currentRoom].rooms[2]].wump)
+		return 2;
 	return 0;
 }
 
@@ -141,17 +158,13 @@ void Cave::initRooms() {
 	}
 
 	caveRooms[wumpus].wump = true;
-	caveRooms[wumpus].desc += "\n~Wumpus has eaten you!";
+	wumpusRoom = wumpus;
 
 	caveRooms[locBatPit[0][1]].bats = true;
-	caveRooms[locBatPit[0][1]].desc += "\nBATS! ~They carried you to a random room!";
 	caveRooms[locBatPit[0][2]].bats = true;
-	caveRooms[locBatPit[0][2]].desc += "\nBATS! ~They carried you to a random room!";
 
 	caveRooms[locBatPit[1][1]].pit = true;
-	caveRooms[locBatPit[1][1]].desc += "\nAAAAAAAAAAAAAAAAAAH! ~You Fell";
 	caveRooms[locBatPit[1][2]].pit = true;
-	caveRooms[locBatPit[1][2]].desc += "\nAAAAAAAAAAAAAAAAAAH! ~You Fell";
 
 
 	//for (int i = 0; i < 2; i++)
@@ -166,12 +179,6 @@ void Cave::initRooms() {
 	//}
 
 	//std::cout << wumpus << std::endl;
-
-
-}
-
-bool Cave::play() {
-	return false;
 }
 
 void Cave::gotoRoom(int room) {
@@ -179,4 +186,26 @@ void Cave::gotoRoom(int room) {
 		currentRoom = dis(gen);
 	else
 		currentRoom = room;
+}
+
+bool Cave::playerMove(int room) {
+	for (auto i = 0; i < 3; i++) {
+		if (caveRooms[currentRoom].rooms[i] == room) {
+			currentRoom = room;
+			return true;
+		}
+	}
+	return false;
+}
+
+void Cave::playerShoot(int room) {
+	if (caveRooms[room].wump)
+		wumpState = false;
+	else {
+		std::cout << "You missed wumpus has changed locations!";
+		caveRooms[wumpusRoom].wump = false;
+		wumpusRoom = dis(gen);
+		caveRooms[wumpusRoom].wump = true;
+	}
+
 }
