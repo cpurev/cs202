@@ -15,9 +15,20 @@ int main(void) {
 
 	cave.printRooms();
 
-	while (cave.play()) {
-		std::cout << "You are in room: " << cave.getCurrentRoom() << '\n';
-	}
+	//while (cave.play()) {
+	//	std::cout << "You are in room: " << cave.getCurrentRoom() << '\n';
+	//	switch (cave.hazardHint())
+	//	{
+	//	case -1: std::cout << "A pit! Luckily bats were there too! They carried you to random room!\n";
+	//		cave.gotoRoom(-1); break;
+	//	case 0: std::cout << "Bats they carried you to random room!\n"; cave.gotoRoom(-1); break;
+	//	case 1: std::cout << "You fell in a pit!"; break;
+	//	case 2: break;
+	//	default:
+	//		break;
+	//	}
+
+	//}
 
 	return 1;
 }

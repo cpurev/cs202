@@ -6,6 +6,12 @@
 #include "wumpusCave.hpp"
 #include <random>
 #include <string>
+#include <fstream>
+
+//Random generator
+std::random_device rd;
+std::mt19937 gen(rd());
+std::uniform_int_distribution<int> dis(1, 19);
 
 Cave::Cave() : currentRoom(0){
 	for (auto i = 0; i < 20; i++) {
@@ -30,26 +36,24 @@ int Cave::hazardHint() {
 }
 
 void Cave::printRooms() {
+	std::ofstream fout("caveLayout.txt");
+
+
 	for (auto v : caveRooms) {
-		std::cout << v.desc << "\t" << v.num << '\t';
+		fout << v.desc << "\t" << v.num << '\t';
 		if (v.rooms[0] != 0)
-			std::cout << v.rooms[0] << ", ";
+			fout << v.rooms[0] << ", ";
 		if (v.rooms[1] != 0)
-			std::cout << v.rooms[1]<< ", ";
+			fout << v.rooms[1]<< ", ";
 		if (v.rooms[2] != 0)
-			std::cout << v.rooms[2] << ", " << std::endl;
-		std::cout << std::endl;
+			fout << v.rooms[2] << ", " << std::endl;
+		fout << std::endl;
 	}
 
 }
 
 //Connects rooms randomly
 void Cave::connectRooms() {
-
-	//Random generator
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_int_distribution<int> dis(1, 19);
 
 	int temp = 0;
 
@@ -77,14 +81,12 @@ void Cave::connectRooms() {
 		goto generate;
 
 	}
+
+	dis = std::uniform_int_distribution<int>(0, 19);
 }
 
 void Cave::initRooms() {
 
-	//Random generator
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_int_distribution<int> dis(1, 20);
 
 	//Bat and pits location
 	int locBatPit[2][3] = { {0, 0, 0}, {0, 0, 0} };
@@ -169,5 +171,12 @@ void Cave::initRooms() {
 }
 
 bool Cave::play() {
+	return false;
+}
 
+void Cave::gotoRoom(int room) {
+	if (room == -1)
+		currentRoom = dis(gen);
+	else
+		currentRoom = room;
 }

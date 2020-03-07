@@ -28,6 +28,8 @@ public:
 
 	int hazardHint();
 
+	void gotoRoom(int room);
+
 private:
 
 	static constexpr int MaxAdjacentRooms = 3;
