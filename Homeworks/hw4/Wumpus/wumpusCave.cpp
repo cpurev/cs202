@@ -51,9 +51,9 @@ void Cave::connectRooms() {
 	for (auto i = 0; i <= 20; i++) {
 		temp = dis(gen);
 
-		while (true) {
+		/*while (true) {
 			if(caveRooms[i].rooms[count] != nullptr)
-		}
+		}*/
 
 		caveRooms[i].rooms[1] = std::make_shared<CaveNode>(caveRooms[temp]);
 		caveRooms[temp].rooms[temp] = std::make_shared<CaveNode>(caveRooms[1]);
@@ -121,12 +121,17 @@ void Cave::initRooms() {
 	}
 
 	caveRooms[wumpus].wump = true;
+	caveRooms[wumpus].desc += "\n~Wumpus has eaten you!";
 
 	caveRooms[locBatPit[0][1]].bats = true;
+	caveRooms[locBatPit[0][1]].desc += "\nBATS! ~They carried you to random room!";
 	caveRooms[locBatPit[0][2]].bats = true;
+	caveRooms[locBatPit[0][2]].desc += "\nBATS! ~They carried you to random room!";
 
 	caveRooms[locBatPit[1][1]].pit = true;
+	caveRooms[locBatPit[1][1]].desc += "\nAAAAAAAAAAAAAAAAAA! ~You Fell";
 	caveRooms[locBatPit[1][2]].pit = true;
+	caveRooms[locBatPit[1][2]].desc += "\nAAAAAAAAAAAAAAAAAA! ~You Fell";
 
 
 	//for (int i = 0; i < 2; i++)
