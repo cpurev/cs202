@@ -29,7 +29,7 @@ int Cave::getCurrentRoom() { return currentRoom; }
 
 std::string Cave::getAdjRooms() {
 	return std::to_string(caveRooms[currentRoom].rooms[0]) +  " " + std::to_string(caveRooms[currentRoom].rooms[1]) + " " + 
-		std::to_string(caveRooms[currentRoom].rooms[2]) + "n";
+		std::to_string(caveRooms[currentRoom].rooms[2]) + "\n";
 }
 
 int Cave::hazard() { 
@@ -39,16 +39,22 @@ int Cave::hazard() {
 		return 0;
 	if (caveRooms[currentRoom].pit)
 		return 1;
-	return 0;
+	if (caveRooms[currentRoom].wump)
+		return 2;
+	return 3;
 }
 
 int Cave::hazardHint() {
-	if (caveRooms[caveRooms[currentRoom].rooms[1]].bats)
-		return 0;
-	if (caveRooms[caveRooms[currentRoom].rooms[2]].pit)
-		return 1;
-	if (caveRooms[caveRooms[currentRoom].rooms[2]].wump)
-		return 2;
+
+	for (auto i = 0; i < 3; i++) {
+		if (caveRooms[caveRooms[currentRoom].rooms[i]].bats)
+			std::cout << "	Bats nearby...\n";
+		if (caveRooms[caveRooms[currentRoom].rooms[i]].pit)
+			std::cout << "	I feel a draft...\n";
+		if (caveRooms[caveRooms[currentRoom].rooms[i]].wump)
+			std::cout << "I smell a horrid stench...\n";
+	}
+
 	return 0;
 }
 
@@ -57,13 +63,10 @@ void Cave::printRooms() {
 
 
 	for (auto v : caveRooms) {
-		fout << v.desc << "\t" << v.num << '\t';
-		if (v.rooms[0] != 0)
-			fout << v.rooms[0] << ", ";
-		if (v.rooms[1] != 0)
-			fout << v.rooms[1]<< ", ";
-		if (v.rooms[2] != 0)
-			fout << v.rooms[2] << ", " << std::endl;
+		fout << v.desc << "\t" << v.num << " bats: " << v.bats << " pits: " << v.pit << " wump: " << v.wump << ' ';
+		fout << v.rooms[0] << ", ";
+		fout << v.rooms[1]<< ", ";
+		fout << v.rooms[2] << ", " << std::endl;
 		fout << std::endl;
 	}
 
@@ -192,10 +195,10 @@ bool Cave::playerMove(int room) {
 	for (auto i = 0; i < 3; i++) {
 		if (caveRooms[currentRoom].rooms[i] == room) {
 			currentRoom = room;
-			return true;
+			return false;
 		}
 	}
-	return false;
+	return true;
 }
 
 void Cave::playerShoot(int room) {

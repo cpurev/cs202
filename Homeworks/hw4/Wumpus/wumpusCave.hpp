@@ -9,7 +9,8 @@
 class Cave {
 public:
 
-	bool playerState, wumpState, arrows;
+	bool playerState, wumpState;
+	int arrows;
 
 	Cave();
 

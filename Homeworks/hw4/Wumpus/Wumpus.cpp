@@ -16,7 +16,7 @@ int main(void) {
 	cave.printRooms();
 
 	while (true) {
-		if (cave.playerState != true || cave.wumpState != true)
+		if (!cave.playerState || !cave.wumpState)
 			break;
 
 		std::cout << "You are in room: " << cave.getCurrentRoom() << '\n';
@@ -25,37 +25,32 @@ int main(void) {
 		case -1: std::cout << "A pit! Luckily bats were there too! They carried you to random room!\n";
 			cave.gotoRoom(-1); continue;
 		case 0: std::cout << "Bats! They carried you to random room!\n"; cave.gotoRoom(-1); continue;
-		case 1: std::cout << "You fell in a pit!"; cave.playerState = false; continue;
-		case 2: break;
+		case 1: std::cout << "You fell in a pit!\n"; cave.playerState = false; continue;
+		case 2: std::cout << "You found wumpus!\n"; cave.playerState = false; continue;
 		default:
 			break;
 		}
 
-		switch (cave.hazardHint())
-		{
-		case 0: std::cout << "Bats nearby...\n"; break;
-		case 1: std::cout << "You feel a draft...\n"; break;
-		case 2: std::cout << "You smell a horrid stench..\n"; break;
-		default:
-			break;
-		}
+		cave.hazardHint();
 
 		std::cout << "Tunnels lead to: " + cave.getAdjRooms();
 
 		char c;
 		int i = 0;
-		std::cout << "Shoot or Move? (S-M)"; std::cin >> c;
+		std::cout << "Shoot or Move? (S-M): "; std::cin >> c;
 
 		if (c == 'M' || c == 'm') {
-			while (cave.playerMove(i)) {
+			 do{
 				std::cout << "Where to? "; std::cin >> i;
-			}
+			}while (cave.playerMove(i));
+
 			continue;
 		}
 
 		if (c == 'S' || c == 's') {
-			std::cout << "You have #" << cave.arrows << "arrows";
+			std::cout << "You have #" << cave.arrows << " arrows\n";
 			std::cout << "Enter a room to shoot at: "; std::cin >> i;
+			--cave.arrows;
 			cave.playerShoot(i);
 			continue;
 		}
@@ -64,7 +59,7 @@ int main(void) {
 	}
 
 	if (cave.playerState == false)
-		std::cout << "Wumpus ate you! Game Over!";
+		std::cout << "Game Over!";
 
 	if (!cave.wumpState)
 		std::cout << "You killed the wumpus! You had " << cave.arrows << " arrows left!";
