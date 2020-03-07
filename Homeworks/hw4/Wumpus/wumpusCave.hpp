@@ -30,17 +30,17 @@ private:
 		std::string desc = ""; // a long description of this room
 
 		bool bats = false , pit = false, wump = false;
-		// constructor should initialize rooms to nullptr
 
-		CaveNode();
+		// constructor should initialize rooms to nullptr
+	//	CaveNode() : rooms(nullptr) {}
 
 	};
 
 
 	//std::vector<std::shared_ptr<CaveNode>> caveRooms;
-	CaveNode caveRooms[20];
+	CaveNode caveRooms[20] = {};
 
-	int currentRoom;
+	int currentRoom = 0;
 
 
 };
