@@ -9,6 +9,8 @@
 class Cave {
 public:
 
+	Cave();
+
 	//~Cave();
 
 	//Connects the rooms randomly
@@ -36,7 +38,7 @@ private:
 
 
 	//std::vector<std::shared_ptr<CaveNode>> caveRooms;
-	CaveNode* caveRooms[20];
+	CaveNode caveRooms[20];
 
 	int currentRoom;
 

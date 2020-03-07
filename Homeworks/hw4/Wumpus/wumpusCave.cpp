@@ -6,6 +6,13 @@
 #include "wumpusCave.hpp"
 #include <random>
 
+Cave::Cave() {
+	for (auto i = 0; i < 20; i++) {
+		CaveNode cn;
+		caveRooms[i] = cn;
+	}
+}
+
 void Cave::connectRooms() {
 
 }
@@ -70,18 +77,28 @@ void Cave::initRooms() {
 		break;
 	}
 
-	for (int i = 0; i < 2; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			std::cout << locBatPit[i][j] << " ";
-		}
+	caveRooms[wumpus].wump = true;
 
-		// Newline for new row 
-		std::cout << std::endl;
-	}
+	caveRooms[locBatPit[0][1]].bats = true;
+	caveRooms[locBatPit[0][2]].bats = true;
 
-	std::cout << wumpus << std::endl;
+	caveRooms[locBatPit[1][1]].pit = true;
+	caveRooms[locBatPit[1][2]].pit = true;
+
+
+
+	//for (int i = 0; i < 2; i++)
+	//{
+	//	for (int j = 0; j < 3; j++)
+	//	{
+	//		std::cout << locBatPit[i][j] << " ";
+	//	}
+
+	//	// Newline for new row 
+	//	std::cout << std::endl;
+	//}
+
+	//std::cout << wumpus << std::endl;
 
 
 }
