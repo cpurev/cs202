@@ -15,5 +15,9 @@ int main(void) {
 
 	cave.printRooms();
 
+	while (cave.play()) {
+		std::cout << "You are in room: " << cave.getCurrentRoom() << '\n';
+	}
+
 	return 1;
 }

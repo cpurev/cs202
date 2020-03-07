@@ -22,6 +22,12 @@ public:
 	//Just print rooms
 	void printRooms();
 
+	bool play();
+
+	int getCurrentRoom();
+
+	int hazardHint();
+
 private:
 
 	static constexpr int MaxAdjacentRooms = 3;

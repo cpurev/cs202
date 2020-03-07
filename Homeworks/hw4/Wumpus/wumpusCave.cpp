@@ -17,6 +17,18 @@ Cave::Cave() : currentRoom(0){
 	}
 }
 
+int Cave::getCurrentRoom() { return currentRoom; }
+
+int Cave::hazardHint() { 
+	if (caveRooms[currentRoom].bats && caveRooms[currentRoom].pit)
+		return -1;
+	if (caveRooms[currentRoom].bats)
+		return 0;
+	if (caveRooms[currentRoom].pit)
+		return 1;
+	return 0;
+}
+
 void Cave::printRooms() {
 	for (auto v : caveRooms) {
 		std::cout << v.desc << "\t" << v.num << '\t';
@@ -153,5 +165,9 @@ void Cave::initRooms() {
 
 	//std::cout << wumpus << std::endl;
 
+
+}
+
+bool Cave::play() {
 
 }
