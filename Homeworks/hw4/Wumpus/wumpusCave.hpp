@@ -12,6 +12,7 @@ public:
 	bool playerState, wumpState;
 	int arrows;
 
+	//Initlize caveRooms and other variables
 	Cave();
 
 	//~Cave();
@@ -25,18 +26,28 @@ public:
 	//Just print rooms
 	void printRooms();
 
+	//Return currentRoom variable
 	int getCurrentRoom();
 
+	//Return currentRooms hazard
 	int hazard();
 
+	//Return adjacent rooms hazard hints
 	int hazardHint();
 
+	//Get adjacent rooms number
 	std::string getAdjRooms();
 
+	//Go to room
+	//-1 goes to random room
 	void gotoRoom(int room);
 
+	//Move player to adj room
+	//Checks if its adj room
 	bool playerMove(int room);
 
+	//Let the player shoot at any room
+	//Limited arrows
 	void playerShoot(int room);
 
 private:

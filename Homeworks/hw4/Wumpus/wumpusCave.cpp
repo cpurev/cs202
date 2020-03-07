@@ -77,22 +77,36 @@ void Cave::connectRooms() {
 
 	int temp = 0;
 
+	//There are total of 20 rooms
 	for (auto i = 0; i < 20; i++) {
 
+		//Label to not let the counter go up
 	generate:
+		//Check if the current room is is already connected to 3
 		if (caveRooms[i].con == 3) {
+			//This is the point where its safe to asume all the rooms are connected
 			if (i + 2 >= 19)
 				break;
+			//We go from bottom to up
+			//Numbers before are already connected so we redefine random generator
+			//Going from current number and
+			//Adds 2 to because of the loop circumstances
 			dis = std::uniform_int_distribution<int>(i + 2, 19);
 			continue;
 		}
 
+		//Get a random room number
 		temp = dis(gen);
 
+		//If this random noom number is already connected to 3 restart
 		if (caveRooms[temp].con == 3)
 			goto generate;
+
+		//If the current room is already connected to the random room restart
 		if (caveRooms[i].rooms[0] == caveRooms[temp].num || caveRooms[i].rooms[1] == caveRooms[temp].num)
 			goto generate;
+
+		//Rooms connect to each other and connections go up by 1
 		caveRooms[i].rooms[caveRooms[i].con] = caveRooms[temp].num;
 		caveRooms[i].con++;
 		caveRooms[temp].rooms[caveRooms[temp].con] = caveRooms[i].num;
@@ -102,6 +116,7 @@ void Cave::connectRooms() {
 
 	}
 
+	//Reset dis for the later use in functions
 	dis = std::uniform_int_distribution<int>(0, 19);
 }
 
@@ -118,11 +133,13 @@ void Cave::initRooms() {
 	int i = 1;
 
 	while (true) {
-
 		temp = dis(gen);
+		
+		//If the random room is wumpus room restart
 		if (wumpus == temp)
 			continue;
 
+		//Bats first
 		if (locBatPit[0][0] != 2) {
 			if (i == 1) {
 				locBatPit[0][i] = temp;
@@ -140,7 +157,8 @@ void Cave::initRooms() {
 			}
 		}
 
-
+		//Then pits
+		//Pits can be at the same position as bats
 		if (locBatPit[1][0] != 2) {
 			if (i == 1) {
 				locBatPit[1][i] = temp;
@@ -160,6 +178,7 @@ void Cave::initRooms() {
 
 	}
 
+	//Putting in all the values
 	caveRooms[wumpus].wump = true;
 	wumpusRoom = wumpus;
 
@@ -168,20 +187,6 @@ void Cave::initRooms() {
 
 	caveRooms[locBatPit[1][1]].pit = true;
 	caveRooms[locBatPit[1][2]].pit = true;
-
-
-	//for (int i = 0; i < 2; i++)
-	//{
-	//	for (int j = 0; j < 3; j++)
-	//	{
-	//		std::cout << locBatPit[i][j] << " ";
-	//	}
-
-	//	// Newline for new row 
-	//	std::cout << std::endl;
-	//}
-
-	//std::cout << wumpus << std::endl;
 }
 
 void Cave::gotoRoom(int room) {

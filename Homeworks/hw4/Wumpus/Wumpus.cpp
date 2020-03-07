@@ -19,6 +19,12 @@ int main(void) {
 		if (!cave.playerState || !cave.wumpState)
 			break;
 
+		if (cave.arrows == 0) {
+			std::cout << "You are out of arrows!\n";
+			cave.playerState = false;
+			break;
+		}
+
 		std::cout << "You are in room: " << cave.getCurrentRoom() << '\n';
 		switch (cave.hazard())
 		{
