@@ -29,10 +29,14 @@ private:
 	struct CaveNode {
 
 		//Adjacent Rooms Pointer
+		//std::shared_ptr<CaveNode> rooms[MaxAdjacentRooms];
 		std::weak_ptr<CaveNode> rooms[MaxAdjacentRooms];
 
 		//Number of room connections
 		int con = 0;
+		
+		//Room number
+		int num = 0;
 
 		//Description for hazards and room number holder
 		std::string desc = ""; // a long description of this room
@@ -46,8 +50,10 @@ private:
 	};
 
 
-	//std::vector<std::shared_ptr<CaveNode>> caveRooms;
-	CaveNode caveRooms[21] = {};
+	std::vector<std::shared_ptr<CaveNode>> caveRooms;
+
+	//Cave Rooms
+	//CaveNode caveRooms[21] = {};
 
 	int currentRoom = 0;
 

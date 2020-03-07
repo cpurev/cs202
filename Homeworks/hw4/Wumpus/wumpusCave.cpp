@@ -8,17 +8,19 @@
 #include <string>
 
 Cave::Cave() : currentRoom(0){
-	for (auto i = 0; i < 20; i++) {
+	for (auto i = 0; i < 21; i++) {
 		std::string str("This is room: " + std::to_string(i));
 		CaveNode cn;
 		cn.desc = str;
-		caveRooms[i] = cn;
+		cn.num = i;
+		caveRooms.push_back(std::make_shared<CaveNode>(cn));
 	}
 }
 
 void Cave::printRooms() {
-	for (auto i = 0; i < 20; i++) {
-		std::cout << caveRooms[i].desc << std::endl;
+	for (auto v : caveRooms) {
+		std::cout << v->desc << "\t" /*<< v->rooms[0]->num << ", " << v->rooms[1]->num << ", "
+			<< v->rooms[2]->num*/ << std::endl;
 	}
 
 }
@@ -34,40 +36,25 @@ void Cave::connectRooms() {
 
 	for (auto i = 0; i <= 20; i++) {
 
-		if (caveRooms[i].con == 3) {
-			dis = std::uniform_int_distribution<int>(i + 1, 20);
+	generate:
+		if (caveRooms[i]->con == 3) {
+			if (i + 2 >= 20)
+				break;
+			dis = std::uniform_int_distribution<int>(i + 2, 20);
 			continue;
 		}
 
-	generate:
 		temp = dis(gen);
 
-		switch (caveRooms[i].con)
-		{
-		case 0: goto first;
-		case 1: goto second;
-		case 2: goto third;
-		default: break;
-		}
+		if (caveRooms[temp]->con == 3)
+			goto generate;
+		caveRooms[i]->rooms[caveRooms[i]->con] = caveRooms[temp];
+		++caveRooms[i]->con;
+		caveRooms[temp]->rooms[caveRooms[temp]->con] = caveRooms[i];
+		++caveRooms[temp]->con;
 
-	first:
-		caveRooms[i].rooms[caveRooms[i].con] = std::make_shared<CaveNode>(caveRooms[temp]);
-		++caveRooms[i].con;
-		caveRooms[temp].rooms[caveRooms[temp].con] = std::make_shared<CaveNode>(caveRooms[i]);
-		++caveRooms[temp].con;
 		goto generate;
-	second:
-		caveRooms[i].rooms[caveRooms[i].con] = std::make_shared<CaveNode>(caveRooms[temp]);
-		++caveRooms[i].con;
-		caveRooms[temp].rooms[caveRooms[temp].con] = std::make_shared<CaveNode>(caveRooms[i]);
-		++caveRooms[temp].con;
-		goto generate;
-	third:
-		caveRooms[i].rooms[caveRooms[i].con] = std::make_shared<CaveNode>(caveRooms[temp]);
-		++caveRooms[i].con;
-		caveRooms[temp].rooms[caveRooms[temp].con] = std::make_shared<CaveNode>(caveRooms[i]);
-		++caveRooms[temp].con;
-		continue;
+
 	}
 }
 
@@ -130,18 +117,18 @@ void Cave::initRooms() {
 
 	}
 
-	caveRooms[wumpus].wump = true;
-	caveRooms[wumpus].desc += "\n~Wumpus has eaten you!";
+	caveRooms[wumpus]->wump = true;
+	caveRooms[wumpus]->desc += "\n~Wumpus has eaten you!";
 
-	caveRooms[locBatPit[0][1]].bats = true;
-	caveRooms[locBatPit[0][1]].desc += "\nBATS! ~They carried you to a random room!";
-	caveRooms[locBatPit[0][2]].bats = true;
-	caveRooms[locBatPit[0][2]].desc += "\nBATS! ~They carried you to a random room!";
+	caveRooms[locBatPit[0][1]]->bats = true;
+	caveRooms[locBatPit[0][1]]->desc += "\nBATS! ~They carried you to a random room!";
+	caveRooms[locBatPit[0][2]]->bats = true;
+	caveRooms[locBatPit[0][2]]->desc += "\nBATS! ~They carried you to a random room!";
 
-	caveRooms[locBatPit[1][1]].pit = true;
-	caveRooms[locBatPit[1][1]].desc += "\nAAAAAAAAAAAAAAAAAAH! ~You Fell";
-	caveRooms[locBatPit[1][2]].pit = true;
-	caveRooms[locBatPit[1][2]].desc += "\nAAAAAAAAAAAAAAAAAAH! ~You Fell";
+	caveRooms[locBatPit[1][1]]->pit = true;
+	caveRooms[locBatPit[1][1]]->desc += "\nAAAAAAAAAAAAAAAAAAH! ~You Fell";
+	caveRooms[locBatPit[1][2]]->pit = true;
+	caveRooms[locBatPit[1][2]]->desc += "\nAAAAAAAAAAAAAAAAAAH! ~You Fell";
 
 
 	//for (int i = 0; i < 2; i++)
