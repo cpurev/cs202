@@ -71,7 +71,7 @@ int main(void) {
 
 	sw.Start();
 	a = ackerman(3, 3);
-	sw.Stop();
+	sw.Stop();	
 	std::cout << std::setw(11) << "Ackerman's Recursion of (3,3): " << a << ", " << sw.eTimeMili() << "ms\n";
 
 	return 1;
