@@ -4,6 +4,7 @@
 //Fibonacci, Ackerman, Factorial problems
 
 #include <iostream>
+#include "stopWatch.hpp"
 
 //Fibonacci with recursion
 unsigned int fibonacci(int n) {
@@ -35,6 +36,7 @@ unsigned int factorial_l(int n) {
 	return j;
 }
 
+//Ackerman's Function
 unsigned int ackerman(int m, int n) {
 	if (m == 0) return n + 1;
 	if (n == 0) return ackerman(m - 1, 1);
@@ -43,7 +45,12 @@ unsigned int ackerman(int m, int n) {
 
 int main(void) {
 
-	std::cout << ackerman(1, 2);
+	StopWatch sw;
+	
+	sw.Start();
+	std::cout << fibonacci(100);
+	sw.Stop();
+	std::cout << "Fibonacci Re"
 
 	return 1;
 }
