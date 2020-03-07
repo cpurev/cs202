@@ -28,10 +28,16 @@ private:
 
 	struct CaveNode {
 
+		//Adjacent Rooms Pointer
 		std::weak_ptr<CaveNode> rooms[MaxAdjacentRooms];
 
+		//Number of room connections
+		int con = 0;
+
+		//Description for hazards and room number holder
 		std::string desc = ""; // a long description of this room
 
+		//Hazard indicators
 		bool bats = false , pit = false, wump = false;
 
 		// constructor should initialize rooms to nullptr
