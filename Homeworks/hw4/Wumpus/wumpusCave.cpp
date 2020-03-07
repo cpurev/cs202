@@ -28,8 +28,9 @@ Cave::Cave() : currentRoom(0), playerState(true), wumpState(true), arrows(5){
 int Cave::getCurrentRoom() { return currentRoom; }
 
 std::string Cave::getAdjRooms() {
-	return std::to_string(caveRooms[currentRoom].rooms[0]) +  " " + std::to_string(caveRooms[currentRoom].rooms[1]) + " " + 
-		std::to_string(caveRooms[currentRoom].rooms[2]) + "\n";
+	return std::to_string(caveRooms[currentRoom].rooms[0]) + " " + 
+		   std::to_string(caveRooms[currentRoom].rooms[1]) + " " + 
+		   std::to_string(caveRooms[currentRoom].rooms[2]) + "\n";
 }
 
 int Cave::hazard() { 
@@ -63,7 +64,8 @@ void Cave::printRooms() {
 
 
 	for (auto v : caveRooms) {
-		fout << v.desc << "\t" << v.num << " bats: " << v.bats << " pits: " << v.pit << " wump: " << v.wump << ' ';
+		fout << v.desc << "\t" << v.num << " bats: " << v.bats << " pits: " << v.pit 
+			 << " wump: " << v.wump << ' ';
 		fout << v.rooms[0] << ", ";
 		fout << v.rooms[1]<< ", ";
 		fout << v.rooms[2] << ", " << std::endl;
@@ -103,7 +105,8 @@ void Cave::connectRooms() {
 			goto generate;
 
 		//If the current room is already connected to the random room restart
-		if (caveRooms[i].rooms[0] == caveRooms[temp].num || caveRooms[i].rooms[1] == caveRooms[temp].num)
+		if (caveRooms[i].rooms[0] == caveRooms[temp].num 
+				|| caveRooms[i].rooms[1] == caveRooms[temp].num)
 			goto generate;
 
 		//Rooms connect to each other and connections go up by 1

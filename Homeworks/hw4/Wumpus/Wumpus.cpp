@@ -36,11 +36,15 @@ int main(void) {
 		//Current room hazards
 		switch (cave.hazard())
 		{
-		case -1: std::cout << "A pit! Luckily bats were there too! They carried you to random room!\n";
+		case -1: std::cout << "A pit! Luckily bats were there too! "
+								<< "They carried you to random room!\n";
 			cave.gotoRoom(-1); continue;
-		case 0: std::cout << "Bats! They carried you to random room!\n"; cave.gotoRoom(-1); continue;
-		case 1: std::cout << "You fell in a pit!\n"; cave.playerState = false; continue;
-		case 2: std::cout << "You found wumpus!\n"; cave.playerState = false; continue;
+		case 0: std::cout << "Bats! They carried you to random room!\n"; 
+			cave.gotoRoom(-1); continue;
+		case 1: std::cout << "You fell in a pit!\n"; 
+			cave.playerState = false; continue;
+		case 2: std::cout << "You found wumpus!\n"; 
+			cave.playerState = false; continue;
 		default:
 			break;
 		}
@@ -83,7 +87,8 @@ int main(void) {
 
 	//PLayer win
 	if (!cave.wumpState)
-		std::cout << "You killed the wumpus! You had " << cave.arrows << " arrows left!";
+		std::cout << "You killed the wumpus! You had " 
+					<< cave.arrows << " arrows left!";
 
 	return 1;
 }
