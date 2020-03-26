@@ -7,6 +7,9 @@
 
 int main() {
 
+	std::cout << Complex() << std::endl;
+	std::cout << Complex(55.55) << std::endl;
+	std::cout << Complex(23.4, 1.65) << std::endl;
 
 
 	return 1;
