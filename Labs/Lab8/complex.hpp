@@ -11,8 +11,7 @@ public:
 
 	Complex operator+(const Complex& complex);
 	Complex& operator+=(const Complex& complex) {
-		_real += complex._real;
-		_imag += complex._imag;
+		*this = *this + complex;
 		return *this;
 	}
 
