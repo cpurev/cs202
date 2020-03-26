@@ -10,6 +10,11 @@ public:
 	Complex(const double& real, const double& imaginary);
 
 	Complex operator+(const Complex& complex);
+	Complex& operator+=(const Complex& complex) {
+		_real += complex._real;
+		_imag += complex._imag;
+		return *this;
+	}
 
 	double real() const { return _real; }
 	double imag() const { return _imag; }

@@ -16,5 +16,9 @@ int main() {
 	std::cout << Complex(7, 2) + 3<< std::endl;
 
 
+	Complex cmplx(5, 5);
+	cmplx += Complex(4, 5);
+	std::cout << cmplx << std::endl;
+
 	return 1;
 }
