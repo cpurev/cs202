@@ -9,11 +9,15 @@ public:
 	Complex(const double& real);
 	Complex(const double& real, const double& imaginary);
 
+	Complex operator+(const Complex& complex);
+
 	double real() const { return _real; }
 	double imag() const { return _imag; }
 private:
 	double _real, _imag;
 };
+
+Complex operator+(const double& real, const Complex complex);
 
 std::ostream& operator<<(std::ostream& os, const Complex& complex);
 

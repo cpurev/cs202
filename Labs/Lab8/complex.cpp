@@ -8,3 +8,11 @@ std::ostream& operator<<(std::ostream& os, const Complex& complex) {
 	os << complex.real() << " + " << complex.imag() << "i";
 	return os;
 }
+
+Complex Complex::operator+(const Complex& complex) {
+	return Complex(_real + complex._real, _imag + complex._imag);
+}
+
+Complex operator+(const double& real, const Complex complex) {
+	return Complex(real + complex.real(), complex.imag());
+}
