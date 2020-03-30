@@ -21,6 +21,10 @@ unsigned int fibonacci_l(int n) {
 	return num1;
 }
 
+//Factorial with recursion
+unsigned int factorial(int n) {
+	return n <= 1 ? 1 : factorial(n - 1) * n;
+}
 
 int main(void) {
 
