@@ -26,6 +26,15 @@ unsigned int factorial(int n) {
 	return n <= 1 ? 1 : factorial(n - 1) * n;
 }
 
+//Factorial with loop
+unsigned int factorial_l(int n) {
+	int j = 1;
+	for (auto i = 1; i <= n; i++) {
+		j *= i;
+	}
+	return j;
+}
+
 int main(void) {
 
 
