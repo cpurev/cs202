@@ -10,6 +10,18 @@ unsigned int fibonacci(int n) {
 	return n <= 1 ? n : fibonacci(n - 1) + fibonacci(n - 2);
 }
 
+//Fibonacci with loops
+unsigned int fibonacci_l(int n) {
+	int num1 = 0, num2 = 1, num3 = 0;
+	for (auto i = 1; i <= n; i++) {
+		num3 = num1 + num2;
+		num1 = num2;
+		num2 = num3;
+	}
+	return num1;
+}
+
+
 int main(void) {
 
 
