@@ -37,7 +37,10 @@ unsigned int factorial_l(int n) {
 
 int main(void) {
 
-
+	std::cout << "Fibonacci Recursion of 10: " << fibonacci(10) << "\n";
+	std::cout << "Fibonacci Loop of 10: " << fibonacci_l(10) << "\n";
+	std::cout << "Factorial Recursion of 10: " << factorial(10) << "\n";
+	std::cout << "Factorial Loop of 10: " << factorial_l(10) << "\n";
 
 	return 1;
 }
