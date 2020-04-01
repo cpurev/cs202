@@ -8,18 +8,23 @@
 class staticClass {
 public:
 	staticClass() {
-		std::cout << __FUNCTION__ << " " << _count << std::endl;
-		++_count;
 	}
-	void publicCount() {
-		std::cout << __FUNCTION__ << " " << _publicCount << std::endl;
-		++_publicCount;
+	void count() {
+		++_count;
+		std::cout << __FUNCTION__ << " " << _count << std::endl;
 
 	}
-	static int _publicCount;
+
+	static void resetCount() {
+		_count = 0;
+		std::cout << __FUNCTION__ << " " << _count << std::endl;
+	}
 private:
 	static int _count;
 };
+
+int staticClass::_count = 5;
+
 void staticLocal() {
 	static int count;
 
@@ -35,7 +40,13 @@ int main() {
 	staticLocal();
 
 	staticClass a;
-	a.publicCount();
+	a.count();
+	a.count();
+	a.count();
+
+	a.resetCount();
+	a.count();
+	a.count();
 
 	return 1;
 }
