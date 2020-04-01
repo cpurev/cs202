@@ -19,7 +19,7 @@ public:
 		_count = 0;
 		std::cout << __FUNCTION__ << " " << _count << std::endl;
 
-		//Dummy is not static so this is wrong
+		//Dummy is not static so this is error
 		//std::cout << __FUNCTION__ << " dummy " << dummy << std::endl;
 	}
 private:
@@ -58,10 +58,14 @@ int main() {
 	staticClass b;
 	b.count();
 
+	//This is error because _count only is in class and its objects
+	//Even though its defined globally
+	//std::cout << "Count is: " << _count;
 
 	std::cout << "\nThis is static function reseting count\n";
 	//resetCount static function it will reset all the other static counts
 	staticClass::resetCount();
+	//b.resetCount() and a.resetCount() will do the same as above line of code
 	std::cout << "\nThis is object a\n";
 	a.count();
 	std::cout << "\nThis is object b\n";
