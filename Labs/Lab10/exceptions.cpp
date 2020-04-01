@@ -35,6 +35,7 @@ void functionA()
 	try{
 		Object obj;
 		functionB();
+		std::cout << "First why is it here?" << std::endl;
 	}
 	// your code here
 
@@ -43,6 +44,8 @@ void functionA()
 	}
 	
 	// your code here
+
+	std::cout << "Last why is it here?" << std::endl;
 }
 
 int main()
