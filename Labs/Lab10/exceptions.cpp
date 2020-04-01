@@ -5,6 +5,16 @@
 
 #include <iostream>
 
+class Object {
+public:
+	Object() {
+		std::cout << "Object Constructed" << std::endl;
+	}
+	~Object() {
+		std::cout << "Object Destructed" << std::endl;
+	}
+};
+
 void functionC()
 {
 	//your code here
@@ -23,6 +33,7 @@ void functionA()
 {
 	// your code here
 	try{
+		Object obj;
 		functionB();
 	}
 	// your code here
