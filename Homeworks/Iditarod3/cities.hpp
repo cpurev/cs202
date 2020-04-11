@@ -4,6 +4,7 @@
 //Header for cities with location
 
 #include <vector>
+#include <string>
 
 #ifndef CITIES_HPP
 #define CITIES_HPP
@@ -23,7 +24,7 @@ public:
 	//Euclidean distance
 	double distance(int first, int second) const;
 	//Load TSPLIB file
-	void load();
+	void load(const std::string& str);
 private:
 	std::vector<CityNode> cityList;
 };
