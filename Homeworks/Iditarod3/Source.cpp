@@ -10,5 +10,7 @@ int main(void) {
 	CityList cl;
 	cl.load("d18512.tsp");
 
+	cl.print();
+
 	return 0;
 }
