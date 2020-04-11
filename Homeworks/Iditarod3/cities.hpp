@@ -19,11 +19,11 @@ public:
 	void x(const double& num);
 	void y(const double& num);
 
-	int id();
-	double x();
-	double y();
+	int id () const;
+	double x() const;
+	double y() const;
 
-	void print();
+	void print() const;
 private:
 	int _id;
 	double _lat;
@@ -37,7 +37,7 @@ public:
 	double distance(int first, int second) const;
 	//Load TSPLIB file
 	void load(const std::string& str);
-	void print();
+	void print() const;
 private:
 	std::vector<std::shared_ptr<CityNode>> cityList;
 };

@@ -17,15 +17,15 @@ void CityNode::x(const double& num) {
 void CityNode::y(const double& num) {
 	_y = num;
 };
-void CityNode::print() {
+void CityNode::print() const {
 	std::cout << _id << "\t" << _x << "\t" << _y << "\n";
 }
 
-int CityNode::id() {return _id;}
-double CityNode::x() { return _x; }
-double CityNode::y() { return _y; }
+int CityNode::id() const {return _id;}
+double CityNode::x() const { return _x; }
+double CityNode::y() const { return _y; }
 
-void CityList::load(const std::string& str) {
+void CityList::load (const std::string& str){
 
 	std::ifstream input(str);
 
@@ -55,16 +55,17 @@ void CityList::load(const std::string& str) {
 		cn.y(d);
 
 		cityList.push_back(std::make_shared<CityNode>(cn));
-
 			
 	}
 
 }
-void CityList::print() {
+void CityList::print() const {
 	for (auto x : cityList) 
 		x->print();
 }
 
 double CityList::distance(int first, int second) const {
+	if (first == second) return 0;
+	if (cityList.size() <= first || cityList.size() <= second) return 0;
 	return std::sqrt(std::pow(cityList[second]->x() - cityList[first]->x(), 2) + std::pow(cityList[second]->y() - cityList[first]->y(), 2));
 }
