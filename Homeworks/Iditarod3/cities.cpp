@@ -6,6 +6,7 @@
 #include "cities.hpp"
 #include <fstream>
 #include <sstream>
+#include <math.h>
 
 void CityNode::id(const int& num){
 	_id = num;
@@ -20,9 +21,9 @@ void CityNode::print() {
 	std::cout << _id << "\t" << _x << "\t" << _y << "\n";
 }
 
-double CityList::distance(int first, int second) const {
-	return 0;
-}
+int CityNode::id() {return _id;}
+double CityNode::x() { return _x; }
+double CityNode::y() { return _y; }
 
 void CityList::load(const std::string& str) {
 
@@ -62,4 +63,8 @@ void CityList::load(const std::string& str) {
 void CityList::print() {
 	for (auto x : cityList) 
 		x->print();
+}
+
+double CityList::distance(int first, int second) const {
+	return std::sqrt(std::pow(cityList[second]->x() - cityList[first]->x(), 2) + std::pow(cityList[second]->y() - cityList[first]->y(), 2));
 }

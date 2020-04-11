@@ -10,7 +10,7 @@ int main(void) {
 	CityList cl;
 	cl.load("d18512.tsp");
 
-	cl.print();
+	std::cout << cl.distance(1, 2);
 
 	return 0;
 }

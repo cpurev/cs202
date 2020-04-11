@@ -18,6 +18,11 @@ public:
 	void id(const int& num);
 	void x(const double& num);
 	void y(const double& num);
+
+	int id();
+	double x();
+	double y();
+
 	void print();
 private:
 	int _id;
