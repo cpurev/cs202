@@ -125,10 +125,13 @@
   <ItemGroup>
     <ClInclude Include="cities.hpp" />
     <ClInclude Include="citypath.hpp" />
+    <ClInclude Include="tspsolver.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cities.cpp" />
     <ClCompile Include="citypath.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="tspsolver.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

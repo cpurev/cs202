@@ -38,8 +38,8 @@ public:
 	//Load TSPLIB file
 	void load(const std::string& str);
 	void print() const;
-	int nodes() const;
-	
+	size_t size() const { return cityList.size(); }
+	std::shared_ptr<CityNode> node(const int& n) const { return cityList[n]; }
 private:
 	std::vector<std::shared_ptr<CityNode>> cityList;
 };

@@ -80,6 +80,3 @@ double CityList::distance(int first, int second) const {
 	//Calculate
 	return std::sqrt(std::pow(cityList[second]->x() - cityList[first]->x(), 2) + std::pow(cityList[second]->y() - cityList[first]->y(), 2));
 }
-int CityList::nodes() const {
-		
-}

@@ -21,12 +21,21 @@
     <ClInclude Include="citypath.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tspsolver.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="citypath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tspsolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
