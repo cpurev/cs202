@@ -8,8 +8,9 @@
 class CityPath {
 public:
 	CityPath(const int& size);
-	void addNode(const std::shared_ptr<CityNode> n);
-	void deleteNode(const int& num);
+	CityPath() : _size(0) {};
+	void addPath(const int& n);
+	void deletePath(const int& num);
 	int getPath(const int& num) const;
 	size_t size() const { return _path.size(); }
 
