@@ -23,5 +23,6 @@ int main(void) {
 	std::cout << "Random solving USA distance: " << ts.solveRandomly(us) << std::endl;
 
 
+
 	return 0;
 }

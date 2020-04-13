@@ -15,7 +15,7 @@ int randomInt(const int& min, const int& max) {
 
 double TspSolver::solveRandomly(const CityList& l) {
 	//Best-found distance init
-	double bestD = 1e12;
+	double bestD = 0;
 
 	//Init paths
 	CityPath chosen(l.size());
@@ -32,7 +32,7 @@ double TspSolver::solveRandomly(const CityList& l) {
 	unchosen.deleteNode(start);
 
 	while (unchosen.size() != 0) {
-		start = randomInt(0, unchosen.size());
+		start = randomInt(0, unchosen.size() - 1);
 
 		chosen.addNode(l.node(start));
 
@@ -40,8 +40,15 @@ double TspSolver::solveRandomly(const CityList& l) {
 
 	}
 
-	for (auto i = 0; i < chosen.size() - 1; i++)
-		bestD += l.distance(i, ++i);
+	std::cout << std::endl;
+	
+	for (auto i = 0; i < chosen.size() - 1; i++) {
 
+		bestD += l.distance(i, i++);
+
+		//std::cout << l.distance(i, i++) << " ";
+	}
+
+	std::cout << std::endl;
 	return bestD;
 }
