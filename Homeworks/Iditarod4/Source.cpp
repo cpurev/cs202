@@ -20,9 +20,9 @@ int main(void) {
 	us.load("usa.tsp");
 	TspSolver ts;
 	
-	//std::cout << "Random solving USA distance: " << ts.solveRandomly(us) << std::endl;
+	std::cout << "Random solving USA distance: " << ts.solveRandomly(us) << std::endl;
 
-	//std::cout << "Greedy solving USA distance: " << ts.solveGreedy(us) << std::endl;
+	std::cout << "Greedy solving USA distance: " << ts.solveGreedy(us) << std::endl;
 
 	std::cout << "My way solving USA distance: " << ts.solveMyWay(us) << std::endl;
 

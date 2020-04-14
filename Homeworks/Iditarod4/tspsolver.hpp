@@ -11,5 +11,4 @@ public:
 	double solveRandomly(const CityList& l);
 	double solveGreedy(const CityList& l);
 	double solveMyWay(const CityList& l);
-	double eucD(double x1, double x2, double y1, double y2);
 };
