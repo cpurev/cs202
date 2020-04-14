@@ -9,6 +9,6 @@
 class TspSolver {
 public:
 	double solveRandomly(const CityList& l);
-	void solveGreedy(const CityList& l);
+	double solveGreedy(const CityList& l);
 	void solveMyWay(const CityList& l);
 };

@@ -31,6 +31,7 @@ double TspSolver::solveRandomly(const CityList& l) {
 
 	unchosen.deletePath(start);
 
+	//Randomly connect cities
 	while (unchosen.size() != 0) {
 		start = randomInt(0, unchosen.size()-1);
 
@@ -40,16 +41,60 @@ double TspSolver::solveRandomly(const CityList& l) {
 
 	}
 
+	//First and last city are the same
 	chosen.addPath(chosen.getPath(0));
 
+	//Calculate total distance of this path
 	for (auto i = 0; i < chosen.size() - 1; i++) {
 
 		bestD += l.distance(chosen.getPath(i), chosen.getPath(i+1));
 
-		std::cout << chosen.getPath(i) << " ";
+		//std::cout << chosen.getPath(i) << " ";
 	}
 
-	std::cout << std::endl;
+	//std::cout << std::endl;
 
 	return bestD;
+}
+
+double TspSolver::solveGreedy(const CityList& l) {
+	//Init distance
+	double dist;
+
+	//Init paths
+	CityPath chosen;
+	CityPath unchosen;
+
+	//Unchosen list
+	for (auto i = 0; i < l.size(); i++)
+		unchosen.addPath(i);
+
+	//Random starting city
+	int start = randomInt(0, l.size() - 1);
+
+	chosen.addPath(start);
+	unchosen.deletePath(start);
+
+	for (auto i = 0; i < l.size() - 1; i++) {
+		dist = 0;
+		for (auto j = 0; j < unchosen.size(); j++) {
+			if (dist < l.distance(chosen.getPath(i), unchosen.getPath(j))) {
+				dist = l.distance(chosen.getPath(i), unchosen.getPath(j));
+				chosen.addPath(j);
+				unchosen.deletePath(j);
+			}
+		}
+	}
+
+	dist = 0;
+
+	//Calculate total distance of this path
+	for (auto i = 0; i < chosen.size() - 1; i++) {
+
+		dist += l.distance(chosen.getPath(i), chosen.getPath(i + 1));
+
+		//std::cout << chosen.getPath(i) << " ";
+	}
+
+	return dist;
 }
