@@ -4,6 +4,7 @@
 //Testing path solving algortihms
 
 #include "tspsolver.hpp"
+#include <fstream>
 
 int main(void) {
 
@@ -18,13 +19,22 @@ int main(void) {
 
 	CityList us;
 	us.load("usa13509.tsp");
-	TspSolver ts;
-	
-	std::cout << "Random solving USA distance: " << ts.solveRandomly(us) << std::endl;
 
-	std::cout << "Greedy solving USA distance: " << ts.solveGreedy(us) << std::endl;
+	std::ifstream inf("graph.svg");
+	if (!inf) {
+		std::cout << "File error";
+		return 0;
+	}
 
-	std::cout << "My way solving USA distance: " << ts.solveMyWay(us) << std::endl;
+	std::string str = "", line;
+	while (std::getline(inf, line)) {
+		str += line;
+		str += "\n";
+	}
+
+	inf.close();
+
+	std::cout << str;
 
 
 	return 0;
