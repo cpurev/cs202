@@ -52,7 +52,7 @@ double TspSolver::solveRandomly(const CityList& l) {
 
 		bestD += l.distance(chosen.getPath(i), chosen.getPath(i+1));
 
-		std::cout << chosen.getPath(i) << " ";
+		//std::cout << chosen.getPath(i) << " ";
 	}
 
 	std::cout << std::endl;
@@ -127,9 +127,9 @@ double TspSolver::solveGreedy(const CityList& l) {
 
 		dist += l.distance(chosen.getPath(i), chosen.getPath(i + 1));
 
-		std::cout << chosen.getPath(i) << " ";
+		//std::cout << chosen.getPath(i) << " ";
 	}
-	std::cout << chosen.getPath(chosen.size() - 1) << std::endl;
+	std::cout /*<< chosen.getPath(chosen.size() - 1)*/ << std::endl;
 
 	return dist;
 }
@@ -172,7 +172,7 @@ double TspSolver::solveMyWay(const CityList& l) {
 
 		dist += l.distance(chosen.getPath(i), chosen.getPath(i + 1));
 
-		std::cout << chosen.getPath(i) << " ";
+		//std::cout << chosen.getPath(i) << " ";
 	}
 	std::cout << std::endl;
 

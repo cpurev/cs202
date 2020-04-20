@@ -17,7 +17,7 @@ int main(void) {
 	rl.load("rl5934.tsp");*/
 
 	CityList us;
-	us.load("usa.tsp");
+	us.load("usa13509.tsp");
 	TspSolver ts;
 	
 	std::cout << "Random solving USA distance: " << ts.solveRandomly(us) << std::endl;
