@@ -31,11 +31,14 @@ int main(void) {
 		str += line;
 		str += "\n";
 	}
-
 	inf.close();
 
-	std::cout << str;
 
+	std::ofstream outf("graph.svg");
+
+	outf.write(str.c_str(), str.size());
+
+	outf.close();
 
 	return 0;
 }
