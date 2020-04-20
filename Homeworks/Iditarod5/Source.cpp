@@ -20,23 +20,25 @@ int main(void) {
 	CityList us;
 	us.load("usa13509.tsp");
 
+	std::vector<std::string> svg;
+
 	std::ifstream inf("graph.svg");
 	if (!inf) {
 		std::cout << "File error";
 		return 0;
 	}
 
-	std::string str = "", line;
-	while (std::getline(inf, line)) {
-		str += line;
-		str += "\n";
-	}
+	std::string line;
+	while (std::getline(inf, line))
+		svg.push_back(line + "\n");
+
 	inf.close();
 
 
 	std::ofstream outf("graph.svg");
 
-	outf.write(str.c_str(), str.size());
+	for(auto v : svg)
+		outf.write(v.c_str(), v.size());
 
 	outf.close();
 
