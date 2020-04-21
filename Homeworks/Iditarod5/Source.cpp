@@ -23,6 +23,7 @@ int main(void) {
 	std::vector<std::string> svg;
 	int dataB = 0, dataE = 0;
 
+	//The solved path container
 	CityList path;
 	path = us;
 
@@ -51,35 +52,35 @@ int main(void) {
 
 	std::string dots = "";
 	double X = 0, Y = 0;
+	//This could be solved dynamically 
+	//By adding min max functions and finding them
+	//In this case i manually searched the min and max in data 
 	double minX = us.node(0)->x() , minY = us.node(9983)->y() ;
 	double maxX = us.node(13508)->x() , maxY = us.node(13508)->y();
-	double max = 0;
 
+	//Loop for each city in list
 	for (auto n = 0; n < us.size(); n++) {
 		dots = "<svg:circle cx=\"";
 
+		//Scaling values
 		X = 1980 - 1920 * (us.node(n)->x() - minX) / (maxX - minX);
 		Y = 2080 - 1080 * (us.node(n)->y() - minY) / (maxY - minY);
 
+		//This is where X goes on graph
 		dots += std::to_string(Y);
+
+		//This is where Y goes on graph
 		dots += "\" cy=\"";
 		dots += std::to_string(X);
-		dots += "\" r=\"";
 
-		/*if (n / 10000 > 1)
-			dots += "11";
-		else if (n / 1000 > 1)
-			dots += "10";
-		else if (n / 100 > 1)
-			dots += '8';
-		else if (n / 10 > 1)
-			dots += '7';
-		else
-			dots += '6';*/
+		//This is the circle radius
+		dots += "\" r=\"";
 		dots += '1';
 
+		//Set circle color
 		dots += "\" fill=\"red\"/>";
 
+		//Push back the element/city
 		svg.push_back(dots + "\n");
 		//svg.push_back(std::to_string(us.node(n)->id()) + "\n");
 	}
