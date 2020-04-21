@@ -149,7 +149,7 @@ double TspSolver::solveMyWay(const CityList& l) {
 	//Vector of x coordinates of the node
 	std::vector<double> x;
 	for (auto i = 0; i < l.size(); i++) {
-		x.push_back(l.node(i)->x());
+		x.push_back(l.node(i)->y());
 	}
 
 	//Sort them
@@ -160,7 +160,7 @@ double TspSolver::solveMyWay(const CityList& l) {
 	//And then put them in chosen citypath
 	for (auto i = 0; i < x.size(); i++) {
 		for (auto j = 0; j < l.size(); j++) {
-			if (x[i] == l.node(j)->x()) {
+			if (x[i] == l.node(j)->y()) {
 				chosen.addPath(j);
 				break;
 			}

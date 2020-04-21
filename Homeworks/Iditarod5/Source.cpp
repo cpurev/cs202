@@ -29,10 +29,8 @@ int main(void) {
 	CityList us;
 	us = defList;
 
-	//Randomly solve
-	ts.solveRandomly(us);
-
-	us.node(13509)->print();
+	//Algorithm solve
+	ts.solveMyWay(us);
 
 	//Input to vector
 	std::ifstream inf("graph.svg");
