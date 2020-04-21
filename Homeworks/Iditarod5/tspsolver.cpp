@@ -55,14 +55,12 @@ double TspSolver::solveRandomly(CityList& l) {
 
 		bestD += l.distance(chosen.getPath(i), chosen.getPath(i + 1));
 
-		temp.addNode(l.node(chosen.getPath(i)));
+		temp.addNode(l.node(chosen.getPath(i)));	
 
-		std::cout << chosen.getPath(i) << " ";
 	}
 
 	temp.addNode(l.node(chosen.getPath(chosen.size() - 1)));
 	l = temp;
-	std::cout << std::endl;
 
 	return bestD;
 }

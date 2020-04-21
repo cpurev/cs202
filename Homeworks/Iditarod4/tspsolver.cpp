@@ -57,7 +57,7 @@ double TspSolver::solveRandomly(CityList& l) {
 
 		temp.addNode(l.node(chosen.getPath(i)));
 
-		std::cout << chosen.getPath(i) << " ";
+		std::cout << chosen.getPath(i) << " "; l.node(chosen.getPath(i))->print();
 	}
 
 	temp.addNode(l.node(chosen.getPath(chosen.size() - 1)));

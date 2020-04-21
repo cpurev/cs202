@@ -20,6 +20,8 @@ int main(void) {
 	us.load("usa.tsp");
 	TspSolver ts;
 	
+	us.print();
+
 	std::cout << "Random solving USA distance: " << ts.solveRandomly(us) << std::endl;
 
 	us.print();
