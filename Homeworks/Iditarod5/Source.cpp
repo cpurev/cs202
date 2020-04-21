@@ -68,8 +68,10 @@ int main(void) {
 	double previousX = 0, previousY = 0;
 	double startX = 0, startY = 0;
 
+	//Total cities divided by 16
 	double progress = defList.size() / 16;
 
+	//16 svg elemnts
 	for (auto i = 0; i < 16; i++) {
 		//Loop for each city in list
 		for (auto n = 0; n < progress * (i + 1); n++) {
@@ -118,6 +120,8 @@ int main(void) {
 
 		}
 
+		//If last reached no need to close the svg file as it will be closed
+		//Later part in the code
 		if (i == 15)
 			break;
 		dots = "</svg:svg>";
