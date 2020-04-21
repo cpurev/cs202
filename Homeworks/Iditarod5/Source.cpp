@@ -30,7 +30,7 @@ int main(void) {
 	us = defList;
 
 	//Algorithm solve
-	ts.solveMyWay(us);
+	ts.solveGreedy(us);
 
 	//Input to vector
 	std::ifstream inf("graph.svg");

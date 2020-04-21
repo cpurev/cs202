@@ -65,13 +65,16 @@ double TspSolver::solveRandomly(CityList& l) {
 	return bestD;
 }
 
-double TspSolver::solveGreedy(const CityList& l) {
+double TspSolver::solveGreedy(CityList& l) {
 	//Init distance
 	double dist;
 
 	//Init paths
 	CityPath chosen;
 	CityPath unchosen;
+
+	//Init list
+	CityList temp;
 
 	//Unchosen list
 	for (auto i = 0; i < l.size(); i++)
@@ -132,19 +135,25 @@ double TspSolver::solveGreedy(const CityList& l) {
 
 		dist += l.distance(chosen.getPath(i), chosen.getPath(i + 1));
 
+		temp.addNode(l.node(chosen.getPath(i)));
 		//std::cout << chosen.getPath(i) << " ";
 	}
-	std::cout /*<< chosen.getPath(chosen.size() - 1)*/ << std::endl;
+
+	temp.addNode(l.node(chosen.getPath(chosen.size() - 1)));
+	l = temp;
 
 	return dist;
 }
 
-double TspSolver::solveMyWay(const CityList& l) {
+double TspSolver::solveMyWay(CityList& l) {
 	//Init distance
 	double dist;
 
 	//Init paths
 	CityPath chosen;
+
+	//Init list
+	CityList temp;
 
 	//Vector of x coordinates of the node
 	std::vector<double> x;
@@ -177,9 +186,13 @@ double TspSolver::solveMyWay(const CityList& l) {
 
 		dist += l.distance(chosen.getPath(i), chosen.getPath(i + 1));
 
+		temp.addNode(l.node(chosen.getPath(i)));
+
 		//std::cout << chosen.getPath(i) << " ";
 	}
-	std::cout << std::endl;
+
+	temp.addNode(l.node(chosen.getPath(chosen.size() - 1)));
+	l = temp;
 
 	return dist;
 }
