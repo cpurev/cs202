@@ -81,8 +81,8 @@ int main(void) {
 			dots = "<svg:circle cx=\"";
 
 			//Scaling values
-			X = 1980 - 1920 * (us.node(n)->x() - minX) / (maxX - minX);
-			Y = 1380 - 1080 * (us.node(n)->y() - minY) / (maxY - minY);
+			X = 1280 - 1080 * (us.node(n)->x() - minX) / (maxX - minX);
+			Y = 2450 - 2250 * (us.node(n)->y() - minY) / (maxY - minY);
 
 			//This is where X goes on graph
 			dots += std::to_string(Y);
