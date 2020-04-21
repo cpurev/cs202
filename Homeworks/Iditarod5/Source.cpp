@@ -68,10 +68,11 @@ int main(void) {
 	double previousX = 0, previousY = 0;
 	double startX = 0, startY = 0;
 
-	
+	double progress = defList.size() / 16;
+
 	for (auto i = 0; i < 16; i++) {
 		//Loop for each city in list
-		for (auto n = 0; n < defList.size(); n++) {
+		for (auto n = 0; n < progress * (i + 1); n++) {
 			previousX = X;
 			previousY = Y;
 			//Create a dot
@@ -116,6 +117,14 @@ int main(void) {
 			svg.push_back(dots + "\n");
 
 		}
+
+		if (i == 15)
+			break;
+		dots = "</svg:svg>";
+		svg.push_back(dots + "\n");
+		dots = "<svg:svg width=\"2250px\" height=\"2500px\">";
+		svg.push_back(dots + "\n");
+
 	}
 	//Connect the last city with starting city
 	dots = "<svg:line x1=\""; dots += std::to_string(Y);
