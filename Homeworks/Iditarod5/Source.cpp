@@ -23,6 +23,9 @@ int main(void) {
 	std::vector<std::string> svg;
 	int dataB = 0, dataE = 0;
 
+	CityList path;
+	path = us;
+
 	//Input to vector
 	std::ifstream inf("graph.svg");
 	if (!inf) {			//Error check
@@ -55,8 +58,8 @@ int main(void) {
 	for (auto n = 0; n < us.size(); n++) {
 		dots = "<svg:circle cx=\"";
 
-		X = 1920 - 1920 * (us.node(n)->x() - minX) / (maxX - minX);
-		Y = 1080 - 1080 * (us.node(n)->y() - minY) / (maxY - minY);
+		X = 1980 - 1920 * (us.node(n)->x() - minX) / (maxX - minX);
+		Y = 2080 - 1080 * (us.node(n)->y() - minY) / (maxY - minY);
 
 		dots += std::to_string(Y);
 		dots += "\" cy=\"";

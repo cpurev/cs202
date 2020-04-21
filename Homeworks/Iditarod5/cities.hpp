@@ -40,6 +40,7 @@ public:
 	void print() const;
 	size_t size() const { return cityList.size(); }
 	std::shared_ptr<CityNode> node(const int& n) const { return cityList[n]; }
+	void addNode(const std::shared_ptr<CityNode>& n) { cityList.push_back(n); }
 private:
 	std::vector<std::shared_ptr<CityNode>> cityList;
 };

@@ -13,13 +13,16 @@ int randomInt(const int& min, const int& max) {
 	return dist(gen);
 }
 
-double TspSolver::solveRandomly(const CityList& l) {
+double TspSolver::solveRandomly(CityList& l) {
 	//Best-found distance init
 	double bestD = 0;
 
 	//Init paths
 	CityPath chosen;
 	CityPath unchosen;
+
+	//Init temp list
+	CityList temp;
 
 	//Unchosen list
 	for (auto i = 0; i < l.size(); i++)
@@ -52,9 +55,13 @@ double TspSolver::solveRandomly(const CityList& l) {
 
 		bestD += l.distance(chosen.getPath(i), chosen.getPath(i+1));
 
+		temp.addNode(l.node(chosen.getPath(i)));
+
 		std::cout << chosen.getPath(i) << " ";
 	}
 
+	temp.addNode(l.node(chosen.getPath(chosen.size() - 1)));
+	l = temp;
 	std::cout << std::endl;
 
 	return bestD;
