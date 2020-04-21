@@ -68,53 +68,55 @@ int main(void) {
 	double previousX = 0, previousY = 0;
 	double startX = 0, startY = 0;
 
-	//Loop for each city in list
-	for (auto n = 0; n < defList.size(); n++) {
-		previousX = X;
-		previousY = Y;
-		//Create a dot
-		dots = "<svg:circle cx=\"";
+	
+	for (auto i = 0; i < 16; i++) {
+		//Loop for each city in list
+		for (auto n = 0; n < defList.size(); n++) {
+			previousX = X;
+			previousY = Y;
+			//Create a dot
+			dots = "<svg:circle cx=\"";
 
-		//Scaling values
-		X = 1980 - 1920 * (us.node(n)->x() - minX) / (maxX - minX);
-		Y = 2080 - 1080 * (us.node(n)->y() - minY) / (maxY - minY);
+			//Scaling values
+			X = 1980 - 1920 * (us.node(n)->x() - minX) / (maxX - minX);
+			Y = 1380 - 1080 * (us.node(n)->y() - minY) / (maxY - minY);
 
-		//This is where X goes on graph
-		dots += std::to_string(Y);
+			//This is where X goes on graph
+			dots += std::to_string(Y);
 
-		//This is where Y goes on graph
-		dots += "\" cy=\"";
-		dots += std::to_string(X);
+			//This is where Y goes on graph
+			dots += "\" cy=\"";
+			dots += std::to_string(X);
 
-		//This is the circle radius
-		dots += "\" r=\"";
-		dots += '1';
+			//This is the circle radius
+			dots += "\" r=\"";
+			dots += '1';
 
-		//Set circle color
-		dots += "\" fill=\"#0078ff\"/>";
+			//Set circle color
+			dots += "\" fill=\"#0078ff\"/>";
 
-		//Push back the element/city
-		svg.push_back(dots + "\n");
+			//Push back the element/city
+			svg.push_back(dots + "\n");
 
-		//Draw a line to previous dot
-		//First dots previous dot is the last dot in list
-		//which is X/Y not calculated yet.
-		if (n == 0) {
-			startX = X; startY = Y;
-			continue;
+			//Draw a line to previous dot
+			//First dots previous dot is the last dot in list
+			//which is X/Y not calculated yet.
+			if (n == 0) {
+				startX = X; startY = Y;
+				continue;
+			}
+			dots = "<svg:line x1=\""; dots += std::to_string(previousY);
+			dots += "\" y1=\""; dots += std::to_string(previousX);
+			dots += "\" x2=\""; dots += std::to_string(Y);
+			dots += "\" y2=\""; dots += std::to_string(X);
+
+			dots += "\" style=\"stroke:rgb(189,0,255);stroke-width:1\" />";
+
+			//Push back the path
+			svg.push_back(dots + "\n");
+
 		}
-		dots = "<svg:line x1=\""; dots += std::to_string(previousY);
-		dots += "\" y1=\""; dots += std::to_string(previousX);
-		dots += "\" x2=\""; dots += std::to_string(Y);
-		dots += "\" y2=\""; dots += std::to_string(X);
-
-		dots += "\" style=\"stroke:rgb(189,0,255);stroke-width:1\" />";
-
-		//Push back the path
-		svg.push_back(dots + "\n");
-
 	}
-
 	//Connect the last city with starting city
 	dots = "<svg:line x1=\""; dots += std::to_string(Y);
 	dots += "\" y1=\""; dots += std::to_string(X);
