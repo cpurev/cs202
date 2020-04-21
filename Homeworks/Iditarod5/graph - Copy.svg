@@ -8,8 +8,8 @@
       <svg:line x1="30" y1="0" x2="30" y2="640" style="stroke:rgb(0,0,0);stroke-width:5" />
       <svg:line x1="28" y1="640" x2="1000" y2="640" style="stroke:rgb(0,0,0);stroke-width:5" />
       <!-- FROM HERE THE DATA-->
-      <svg:circle cx="43" cy="625" r="5" fill="#000000"/>
-      <svg:text x="41" y="628" font-size="8" fill="white">9</svg:text>
+      <svg:circle cx="35" cy="634" r="3" fill="#000000"/>
+      <svg:text x="36" y="622" font-size="8" fill="red">9</svg:text>
 
       <svg:circle cx="63" cy="605" r="6" fill="#000000"/>
       <svg:text x="59" y="608" font-size="8" fill="white">99</svg:text>

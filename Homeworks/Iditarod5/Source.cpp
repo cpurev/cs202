@@ -48,20 +48,19 @@ int main(void) {
 
 	std::string dots = "";
 	double X = 0, Y = 0;
-	double baseX = us.node(0)->x() / 1000, baseY = us.node(9983)->y() / 1000;
+	double minX = us.node(0)->x() , minY = us.node(9983)->y() ;
+	double maxX = us.node(13508)->x() , maxY = us.node(13508)->y();
+	double max = 0;
 
 	for (auto n = 0; n < us.size(); n++) {
 		dots = "<svg:circle cx=\"";
 
+		X = 1920 - 1920 * (us.node(n)->x() - minX) / (maxX - minX);
+		Y = 1080 - 1080 * (us.node(n)->y() - minY) / (maxY - minY);
 
-		X = us.node(n)->x() / 1000 - baseX;
-		X = 34 + n;
-		Y = us.node(n)->y() / 1000 - baseY;
-		Y = 640 - n;
-
-		dots += std::to_string(X);
-		dots += "\" cy=\"";
 		dots += std::to_string(Y);
+		dots += "\" cy=\"";
+		dots += std::to_string(X);
 		dots += "\" r=\"";
 
 		/*if (n / 10000 > 1)
@@ -74,14 +73,13 @@ int main(void) {
 			dots += '7';
 		else
 			dots += '6';*/
-		dots += '2';
+		dots += '1';
 
-		dots += "\" fill=\"black\"/>";
+		dots += "\" fill=\"red\"/>";
 
 		svg.push_back(dots + "\n");
 		//svg.push_back(std::to_string(us.node(n)->id()) + "\n");
 	}
-
 
 	//After data is inserted push back the saved elements that is not part of data
 	std::istringstream iss(line);
