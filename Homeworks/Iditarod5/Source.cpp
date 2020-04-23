@@ -9,17 +9,14 @@
 
 int main(void) {
 
-	/*CityList vm;
-	vm.load("vm1748.tsp");
-	CityList d15;
-	d15.load("d15112.tsp");
-	CityList d18;
-	d18.load("d18512.tsp");
-	CityList rl;
-	rl.load("rl5934.tsp");*/
-
 	CityList defList;
-	defList.load("usa13509.tsp");
+
+	/*
+	defList.load("vm1748.tsp");
+	defList.load("d15112.tsp");
+	defList.load("d18512.tsp");*/
+	defList.load("rl5934.tsp");
+	//defList.load("usa13509.tsp");*/
 	std::vector<std::string> svg;
 	int dataB = 0, dataE = 0;
 	TspSolver ts;
