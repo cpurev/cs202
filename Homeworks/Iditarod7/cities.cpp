@@ -54,12 +54,22 @@ void CityList::load (const std::string& str){
 		//First number is id
 		iss >> num;
 		cn.id(num);
+
 		//Second number is x
 		iss >> d;
 		cn.x(d);
+		if (d > maxX)
+			maxX = d;
+		if (d < minX)
+			minX = d;
+
 		//Third number is y
 		iss >> d;
 		cn.y(d);
+		if (d > maxY)
+			maxY = d;
+		if (d < minY)
+			minY = d;
 
 		//Push it back to the vector
 		cityList.push_back(std::make_shared<CityNode>(cn));

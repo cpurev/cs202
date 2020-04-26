@@ -1,41 +1,5 @@
-<html xmlns="http://www.w3.org/1999/xhtml" 
-      xmlns:svg="http://www.w3.org/2000/svg">
-  <body>
-    <h1>Loading from usa13509.tsp</h1>
-    <svg:svg width="1500px" height="650px">
-      <svg:text x="12" y="12" fill="black">Y</svg:text>
-      <svg:text x="1010" y="645" fill="black">X</svg:text>
-      <svg:line x1="30" y1="0" x2="30" y2="640" style="stroke:rgb(0,0,0);stroke-width:5" />
-      <svg:line x1="28" y1="640" x2="1000" y2="640" style="stroke:rgb(0,0,0);stroke-width:5" />
-      <!-- FROM HERE THE DATA-->
 
-      <svg:circle cx="83" cy="585" r="1" fill="#000000"/>
-
-      <svg:circle cx="143" cy="525" r="1" fill="#000000"/>
-<svg:line x1="83" y1="585" x2="143" y2="525" style="stroke:rgb(0, 0, 0);stroke-width:1" />
+    <svg width="1500px" height="650px">
+      <text x="12" y="12" fill="black">Y</svg:text>
 	
-    </svg:svg>
-  </body>
-</html>
-
-<svg:svg width="4500px" height="2500px">
-<svg:line x1="1000.000000" y1="-5694.458249" x2="1829.890691" y2="1292.058727" style="stroke:rgb(189,0,255);stroke-width:1" />
-    </svg:svg>
-    <svg:svg width="4500px" height="2500px">
-<svg:line x1="1000.000000" y1="-5694.458249" x2="1829.890691" y2="1292.058727" style="stroke:rgb(189,0,255);stroke-width:1" />
-    </svg:svg>
-    <svg:svg width="4500px" height="2500px">
-<svg:line x1="1000.000000" y1="-5694.458249" x2="1829.890691" y2="1292.058727" style="stroke:rgb(189,0,255);stroke-width:1" />
-    </svg:svg>
-    <svg:svg width="4500px" height="2500px">
-<svg:line x1="1000.000000" y1="-5694.458249" x2="1829.890691" y2="1292.058727" style="stroke:rgb(189,0,255);stroke-width:1" />
-    </svg:svg>
-    <svg:svg width="4500px" height="2500px">
-<svg:line x1="1000.000000" y1="-5694.458249" x2="1829.890691" y2="1292.058727" style="stroke:rgb(189,0,255);stroke-width:1" />
-    </svg:svg>
-    <svg:svg width="4500px" height="2500px">
-<svg:line x1="1000.000000" y1="-5694.458249" x2="1829.890691" y2="1292.058727" style="stroke:rgb(189,0,255);stroke-width:1" />
-    </svg:svg>
-    <svg:svg width="4500px" height="2500px">
-<svg:line x1="1000.000000" y1="-5694.458249" x2="1829.890691" y2="1292.058727" style="stroke:rgb(189,0,255);stroke-width:1" />
-    </svg:svg>
+    <\svg>
