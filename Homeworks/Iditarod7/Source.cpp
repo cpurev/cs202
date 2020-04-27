@@ -166,6 +166,22 @@ void browseCallback(Fl_Widget* w, void* data) {
 
 	input->value(fnfc.filename());
 }
+
+void greedy(Fl_Widget* w, void* data) {
+	Fl_Input* input = (Fl_Input*)data;
+
+	solve(input->value(), 2);
+}
+void random(Fl_Widget* w, void* data) {
+	Fl_Input* input = (Fl_Input*)data;
+
+	solve(input->value(), 1);
+}
+void myway(Fl_Widget* w, void* data) {
+	Fl_Input* input = (Fl_Input*)data;
+
+	solve(input->value(), 0);
+}
 int main(int argc, char** argv) {
 
 	Fl_Window* window = new Fl_Window(300, 215, "TSPLIB Path Solve into SVG file");
@@ -178,9 +194,13 @@ int main(int argc, char** argv) {
 	Fl_Button* buttonSG = new Fl_Button(5, 45, 90, 25, "Greedy");
 	Fl_Button* buttonSR = new Fl_Button(105, 45, 90, 25, "Random");
 	Fl_Button* buttonSM = new Fl_Button(205, 45, 90, 25, "MyWay");
+	buttonSG->callback(greedy, inputf);
+	buttonSR->callback(random, inputf);
+	buttonSM->callback(myway, inputf);
 
 	Fl_Output* distance = new Fl_Output(70, 80, 200, 25, "Distance:");
 
+	//Instructions prompt
 	Fl_Text_Buffer* buff = new Fl_Text_Buffer();
 	Fl_Text_Display* instructions = new Fl_Text_Display(5, 130, 290, 75, "Instructions");
 	instructions->buffer(buff);
