@@ -22,11 +22,13 @@ void solve(const std::string& str, const int s) {
 	if (str.size() == 0)
 		return;
 	std::string dir;
+
 	std::transform(str.begin(), str.end(), std::back_inserter(dir), 
 		[](unsigned char c) -> unsigned char {if (c == '\\') return '/'; return c; });
 
 	CityList defList;
-	defList.load(dir);
+	if (!defList.load(dir))
+		return;
 
 	//SVG element storing vector
 	std::vector<std::string> svg;

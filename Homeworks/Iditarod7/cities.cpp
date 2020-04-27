@@ -25,14 +25,14 @@ int CityNode::id() const {return _id;}
 double CityNode::x() const { return _x; }
 double CityNode::y() const { return _y; }
 
-void CityList::load (const std::string& str){
+bool CityList::load (const std::string& str){
 
 	std::ifstream input(str);
 
 	//Check if file is open
 	if (!input) {
 		std::cout << "File error";
-		return;
+		return false;
 	}
 
 	//Loop till node cord section
@@ -75,7 +75,7 @@ void CityList::load (const std::string& str){
 		cityList.push_back(std::make_shared<CityNode>(cn));
 			
 	}
-
+	return true;
 }
 void CityList::print() const {
 	for (auto x : cityList) 

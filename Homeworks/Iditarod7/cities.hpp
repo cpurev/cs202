@@ -37,7 +37,7 @@ public:
 	//Euclidean distance
 	double distance(int first, int second) const;
 	//Load TSPLIB file
-	void load(const std::string& str);
+	bool load(const std::string& str);
 	void print() const;
 	size_t size() const { return cityList.size(); }
 	std::shared_ptr<CityNode> node(const int& n) const { return cityList[n]; }
