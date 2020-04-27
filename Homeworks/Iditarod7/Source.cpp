@@ -9,6 +9,12 @@
 #include <sstream>
 
 #include <FL/Fl_Window.H>
+#include <FL/Fl_Button.H>
+#include <FL/Fl_Input.H>
+#include <FL/Fl_Output.H>
+#include <FL/Fl.H>
+#include <FL/Fl_Widget.H>
+#include <FL/Fl_Text_Display.H>
 
 void solve(const std::string& str, const int s) {
 	CityList defList;
@@ -142,9 +148,26 @@ void solve(const std::string& str, const int s) {
 	outf.close();
 }
 
-int main(void) {
+int main(int argc, char** argv) {
 
-	solve("usa13509.tsp", 1);
+	Fl_Window* window = new Fl_Window(300, 215, "TSPLIB Path Solve into SVG file");
+	window->begin();
+	
+	Fl_Button* browsef = new Fl_Button(5, 10, 90, 25, "Browse File");
+	Fl_Input* inputf = new Fl_Input(105, 10, 185, 25);
 
-	return 0;
+	Fl_Button* buttonSG = new Fl_Button(5, 45, 90, 25, "Greedy");
+	Fl_Button* buttonSR = new Fl_Button(105, 45, 90, 25, "Random");
+	Fl_Button* buttonSM = new Fl_Button(205, 45, 90, 25, "MyWay");
+
+	Fl_Output* distance = new Fl_Output(70, 80, 200, 25, "Distance:");
+
+	Fl_Text_Buffer* buff = new Fl_Text_Buffer();
+	Fl_Text_Display* instructions = new Fl_Text_Display(5, 130, 290, 75, "Instructions");
+	instructions->buffer(buff);
+	buff->text("Choose a TSPLIB file and then choose one\nof the 3 algorithms to solve. It will show the\ntotal distance travalled and will output\nSVG file that will open in browser.");
+	window->end();
+	window->resizable();
+	window->show(argc, argv);
+	return (Fl::run());
 }
