@@ -17,14 +17,17 @@
 #include <FL/Fl_Widget.H>
 #include <FL/Fl_Text_Display.H>
 #include <FL/Fl_Native_File_Chooser.H>
+
 namespace {
 	double solvedD = 0;
 }
 void solve(const std::string& str, const int s, double& d) {
+	//If there is no dir
 	if (str.size() == 0)
 		return;
-	std::string dir;
 
+	//C readable dir
+	std::string dir;
 	std::transform(str.begin(), str.end(), std::back_inserter(dir), 
 		[](unsigned char c) -> unsigned char {if (c == '\\') return '/'; return c; });
 
@@ -146,6 +149,7 @@ void solve(const std::string& str, const int s, double& d) {
 void browseCallback(Fl_Widget* w, void* data) {
 	Fl_Input* input = (Fl_Input*)data;
 
+	//File browser
 	Fl_Native_File_Chooser fnfc;
 	fnfc.title("Choose TSPLIB file to solve");
 	fnfc.type(Fl_Native_File_Chooser::BROWSE_FILE);
