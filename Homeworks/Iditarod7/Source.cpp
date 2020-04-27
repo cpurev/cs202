@@ -7,6 +7,7 @@
 #include "tspsolver.hpp"
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Button.H>
@@ -18,8 +19,14 @@
 #include <FL/Fl_Native_File_Chooser.H>
 
 void solve(const std::string& str, const int s) {
+	if (str.size() == 0)
+		return;
+	std::string dir;
+	std::transform(str.begin(), str.end(), std::back_inserter(dir), 
+		[](unsigned char c) -> unsigned char {if (c == '\\') return '/'; return c; });
+
 	CityList defList;
-	defList.load(str);
+	defList.load(dir);
 
 	//SVG element storing vector
 	std::vector<std::string> svg;
@@ -163,6 +170,7 @@ void myway(Fl_Widget* w, void* data) {
 
 	solve(input->value(), 0);
 }
+
 int main(int argc, char** argv) {
 	Fl_Window* window = new Fl_Window(300, 215, "TSPLIB Path Solve into SVG file");
 	window->begin();
