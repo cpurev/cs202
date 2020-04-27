@@ -23,7 +23,6 @@ void solve(const std::string& str, const int s) {
 
 	//SVG element storing vector
 	std::vector<std::string> svg;
-	int dataB = 0, dataE = 0;
 	TspSolver ts;
 
 	//The solved path container
@@ -42,28 +41,11 @@ void solve(const std::string& str, const int s) {
 		return;
 	}
 
-	//Input to vector
-	std::ifstream inf("graph.svg");
-	if (!inf) {			//Error check
-		std::cout << "File error";
-		return;
-	}
-	std::string line;
-	while (std::getline(inf, line)) {	//Get each line and push_back with newline
-		svg.push_back(line + "\n");
-		if (line == "      <!-- FROM HERE THE DATA-->")
-			dataE = svg.size();
-		if (line == "    </svg:svg>")
-			dataB = svg.size();
-	}
-	inf.close();
-
-	line = "";
-	//Save data after city data
-	for (auto i = dataB - 1; i < svg.size(); i++)
-		line += svg[i];
-
-	svg.resize(dataE);
+	//Push back header
+	svg.push_back("<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:svg = \"http://www.w3.org/2000/svg\" >\n");
+	svg.push_back("<body>\n");
+	svg.push_back("<svg:svg width=\"2250px\" height=\"2500px\">\n");
+	svg.push_back("<!-- FROM HERE THE DATA-->\n");
 
 	std::string dots = "";
 	double X = 0, Y = 0;
@@ -136,14 +118,13 @@ void solve(const std::string& str, const int s) {
 	//Push back the path
 	svg.push_back(dots + "\n");
 
-	//After data is inserted push back the saved elements that is not part of data
-	std::istringstream iss(line);
-	line = "";
-	while (std::getline(iss, line, '\n'))
-		svg.push_back(line + "\n");
+	//Push back tail
+	svg.push_back("</svg:svg>\n");
+	svg.push_back("</body>\n");
+	svg.push_back("</html>\n");
 
 	//Output
-	std::ofstream outf("graph.svg");
+	std::ofstream outf("tspsolved.svg");
 	for (auto v : svg)
 		outf.write(v.c_str(), v.size());
 	outf.close();
@@ -183,7 +164,6 @@ void myway(Fl_Widget* w, void* data) {
 	solve(input->value(), 0);
 }
 int main(int argc, char** argv) {
-
 	Fl_Window* window = new Fl_Window(300, 215, "TSPLIB Path Solve into SVG file");
 	window->begin();
 	
