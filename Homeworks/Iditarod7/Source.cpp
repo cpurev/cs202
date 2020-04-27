@@ -138,7 +138,7 @@ void solve(const std::string& str, const int s, double& d) {
 	svg.push_back("</html>\n");
 
 	//Output
-	std::ofstream outf("tspsolved.svg");
+	std::ofstream outf("C:\\Users\\Public\\Downloads\\tspsolved.svg");
 	for (auto v : svg)
 		outf.write(v.c_str(), v.size());
 	outf.close();
