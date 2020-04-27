@@ -17,8 +17,10 @@
 #include <FL/Fl_Widget.H>
 #include <FL/Fl_Text_Display.H>
 #include <FL/Fl_Native_File_Chooser.H>
-
-void solve(const std::string& str, const int s) {
+namespace {
+	double solvedD = 0;
+}
+void solve(const std::string& str, const int s, double& d) {
 	if (str.size() == 0)
 		return;
 	std::string dir;
@@ -41,11 +43,11 @@ void solve(const std::string& str, const int s) {
 	//Algorithm solve
 	switch (s) {
 	case 2:
-		ts.solveGreedy(us); break;
+		d = ts.solveGreedy(us); break;
 	case 1:
-		ts.solveRandomly(us); break;
+		d = ts.solveRandomly(us); break;
 	case 0:
-		ts.solveMyWay(us); break;
+		d = ts.solveMyWay(us); break;
 	default:
 		return;
 	}
@@ -137,6 +139,8 @@ void solve(const std::string& str, const int s) {
 	for (auto v : svg)
 		outf.write(v.c_str(), v.size());
 	outf.close();
+
+	std::cout << "Succesfuly solved " << std::endl;
 }
 
 void browseCallback(Fl_Widget* w, void* data) {
@@ -159,18 +163,39 @@ void browseCallback(Fl_Widget* w, void* data) {
 
 void greedy(Fl_Widget* w, void* data) {
 	Fl_Input* input = (Fl_Input*)data;
+	if (input->value() == 0)
+		return;
 
-	solve(input->value(), 2);
+	solve(input->value(), 2, solvedD);
+
+	Fl_Button* bttn = (Fl_Button*)data;
+	Fl_Output* out = (Fl_Output*)bttn->parent()->child(5);
+
+	out->value(std::to_string(solvedD).c_str());
 }
 void random(Fl_Widget* w, void* data) {
 	Fl_Input* input = (Fl_Input*)data;
+	if (input->value() == 0)
+		return;
 
-	solve(input->value(), 1);
+	solve(input->value(), 1, solvedD);
+
+	Fl_Button* bttn = (Fl_Button*)data;
+	Fl_Output* out = (Fl_Output*)bttn->parent()->child(5);
+
+	out->value(std::to_string(solvedD).c_str());
 }
 void myway(Fl_Widget* w, void* data) {
 	Fl_Input* input = (Fl_Input*)data;
+	if (input->value() == 0)
+		return;
 
-	solve(input->value(), 0);
+	solve(input->value(), 0, solvedD);
+
+	Fl_Button* bttn = (Fl_Button*)data;
+	Fl_Output* out = (Fl_Output*)bttn->parent()->child(5);
+
+	out->value(std::to_string(solvedD).c_str());
 }
 
 int main(int argc, char** argv) {
