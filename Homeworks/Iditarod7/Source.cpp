@@ -15,6 +15,7 @@
 #include <FL/Fl.H>
 #include <FL/Fl_Widget.H>
 #include <FL/Fl_Text_Display.H>
+#include <FL/Fl_Native_File_Chooser.H>
 
 void solve(const std::string& str, const int s) {
 	CityList defList;
@@ -148,6 +149,23 @@ void solve(const std::string& str, const int s) {
 	outf.close();
 }
 
+void browseCallback(Fl_Widget* w, void* data) {
+	Fl_Input* input = (Fl_Input*)data;
+
+	Fl_Native_File_Chooser fnfc;
+	fnfc.title("Choose TSPLIB file to solve");
+	fnfc.type(Fl_Native_File_Chooser::BROWSE_FILE);
+	fnfc.filter("TSP\t*.tsp\n");
+	fnfc.directory("/var/tmp");           // default directory to use
+	// Show native chooser
+	switch (fnfc.show()) {
+	case -1: printf("ERROR: %s\n", fnfc.errmsg());    break;  // ERROR
+	case  1: printf("CANCEL\n");                      break;  // CANCEL
+	default: printf("PICKED: %s\n", fnfc.filename()); break;  // FILE CHOSEN
+	}
+
+	input->value(fnfc.filename());
+}
 int main(int argc, char** argv) {
 
 	Fl_Window* window = new Fl_Window(300, 215, "TSPLIB Path Solve into SVG file");
@@ -155,6 +173,7 @@ int main(int argc, char** argv) {
 	
 	Fl_Button* browsef = new Fl_Button(5, 10, 90, 25, "Browse File");
 	Fl_Input* inputf = new Fl_Input(105, 10, 185, 25);
+	browsef->callback(browseCallback, inputf);
 
 	Fl_Button* buttonSG = new Fl_Button(5, 45, 90, 25, "Greedy");
 	Fl_Button* buttonSR = new Fl_Button(105, 45, 90, 25, "Random");
@@ -166,6 +185,7 @@ int main(int argc, char** argv) {
 	Fl_Text_Display* instructions = new Fl_Text_Display(5, 130, 290, 75, "Instructions");
 	instructions->buffer(buff);
 	buff->text("Choose a TSPLIB file and then choose one\nof the 3 algorithms to solve. It will show the\ntotal distance travalled and will output\nSVG file that will open in browser.");
+
 	window->end();
 	window->resizable();
 	window->show(argc, argv);
